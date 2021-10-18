@@ -3,6 +3,7 @@ SRCS_DIR			= .
 SRCS_FILES			= 	\
 						Contact.class.cpp \
 						phonebook.cpp \
+						add.cpp \
 
 HEAD_FILES			= \
 						Contact.class.hpp \
