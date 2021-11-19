@@ -12,7 +12,7 @@ HEAD_FILES			= \
 SRCS				= $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 INCLUDES			= -I .
 LIBS				= 
-CC					= clang++
+CXX					= clang++
 OPTS				= 
 CXXFLAGS			= -std=c++98 -Wall -Wextra -Werror ${OPTS} $(INCLUDES)
 OBJS				= $(SRCS:.cpp=.o)
@@ -24,7 +24,7 @@ all:
 					@$(MAKE) $(NAME)
 
 $(NAME):			$(OBJS) ${HEAD_FILES}
-					$(CC) $(OBJS) $(LIBS) -o $(NAME)
+					$(CXX) $(OBJS) $(LIBS) -o $(NAME)
 
 bonus:				all
 
