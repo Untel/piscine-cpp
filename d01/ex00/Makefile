@@ -1,9 +1,13 @@
 
 SRCS_DIR			= .
 SRCS_FILES			= 	\
+						Zombie.cpp \
+						newZombie.cpp \
+						randomChump.cpp \
+						main.cpp \
 
 HEAD_FILES			= \
-						Account.class.hpp \
+						Zombie.hpp \
 
 SRCS				= $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 INCLUDES			= -I .
@@ -12,7 +16,7 @@ CXX					= c++
 OPTS				=
 CXXFLAGS			= -std=c++98 -Wall -Wextra -Werror ${OPTS} $(INCLUDES) -MMD
 OBJS				= $(SRCS:.cpp=.o)
-NAME				= GlobalBanksters
+NAME				= zombie
 ARGS				= 
 OBJ_DIR				= objs
 DEP 				= $(OBJS:.o=.d)
