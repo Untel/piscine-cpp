@@ -25,10 +25,6 @@ bonus:				all
 run:				all
 					./$(NAME) $(ARGS)
 
-norme:
-					$(LIBFT_MAKE) norme
-					norminette $(SRCS)
-
 clean:
 					$(RM) $(OBJS)
 

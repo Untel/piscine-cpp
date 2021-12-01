@@ -12,12 +12,13 @@ SRCS				= $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 INCLUDES			= -I .
 LIBS				= 
 CXX					= clang++
-OPTS				= -D AUTOFILL_CONTACTS
+OPTS				= 
 CXXFLAGS			= -std=c++98 -Wall -Wextra -Werror ${OPTS} $(INCLUDES)
 OBJS				= $(SRCS:.cpp=.o)
 NAME				= phonebook
 ARGS				= 
 OBJ_DIR				= objs
+DEP 				= $(OBJS:.o=.d)
 
 all:				
 					@$(MAKE) $(NAME)
@@ -25,14 +26,14 @@ all:
 $(NAME):			$(OBJS) ${HEAD_FILES}
 					$(CXX) $(OBJS) $(LIBS) -o $(NAME)
 
-bonus:				all
+-include $(DEP)
 
 run:				all
 					./$(NAME) $(ARGS)
 
-norme:
-					$(LIBFT_MAKE) norme
-					norminette $(SRCS)
+test:				
+					@$(MAKE) OPTS="-D AUTOFILL_CONTACTS" re
+					./$(NAME) $(ARGS)
 
 clean:
 					$(RM) $(OBJS)

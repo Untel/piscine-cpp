@@ -12,11 +12,12 @@ INCLUDES			= -I .
 LIBS				= 
 CXX					= clang++
 OPTS				=
-CXXFLAGS			= -std=c++98 -Wall -Wextra -Werror ${OPTS} $(INCLUDES)
+CXXFLAGS			= -std=c++98 -Wall -Wextra -Werror ${OPTS} $(INCLUDES) -MMD
 OBJS				= $(SRCS:.cpp=.o)
 NAME				= GlobalBanksters
 ARGS				= 
 OBJ_DIR				= objs
+DEP 				= $(OBJS:.o=.d)
 
 all:				
 					@$(MAKE) $(NAME)
@@ -24,7 +25,7 @@ all:
 $(NAME):			$(OBJS) ${HEAD_FILES}
 					$(CXX) $(OBJS) $(LIBS) -o $(NAME)
 
-bonus:				all
+-include $(DEP)
 
 run:				all
 					./$(NAME) $(ARGS)

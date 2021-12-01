@@ -48,7 +48,6 @@ void
         std::cout << "nickname: " << c->nickname << std::endl;
         std::cout << "phone number: " << c->phone_number << std::endl;
         std::cout << "darkest secret: " << c->darkest_secret << std::endl;
-        std::cout << std::endl;
     } else {
         std::cout << "Wrong index, should be between 0 and " << Contact::count - 1 << std::endl;
     }
@@ -71,7 +70,9 @@ int
     print_split_line("=");
     for (int i = 0; i < Contact::count; i++) {
         c = &contacts[i];
-        print_ten_chars(std::to_string(i));
+        std::ostringstream ss;
+        ss << i;
+        print_ten_chars(ss.str());
         print_devider();
         print_ten_chars(c->first_name);
         print_devider();
@@ -134,7 +135,6 @@ int
         }
         std::cout << "cmd (ADD, SEARCH, EXIT): ";
         std::cin >> input;
-        std::cout << std::endl;
     }
     return 0;
 }
