@@ -3,7 +3,6 @@ SRCS_DIR			= .
 SRCS_FILES			= 	\
 						Contact.class.cpp \
 						phonebook.cpp \
-						add.cpp \
 
 HEAD_FILES			= \
 						Contact.class.hpp \
@@ -13,7 +12,7 @@ SRCS				= $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 INCLUDES			= -I .
 LIBS				= 
 CXX					= clang++
-OPTS				= 
+OPTS				= -D AUTOFILL_CONTACTS
 CXXFLAGS			= -std=c++98 -Wall -Wextra -Werror ${OPTS} $(INCLUDES)
 OBJS				= $(SRCS:.cpp=.o)
 NAME				= phonebook

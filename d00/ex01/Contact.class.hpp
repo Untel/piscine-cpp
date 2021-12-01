@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.class.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: commetuveux <commetuveux@student.42.fr>    +#+  +:+       +#+        */
+/*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/17 21:28:52 by commetuveux       #+#    #+#             */
-/*   Updated: 2021/11/04 18:51:20 by commetuveux      ###   ########.fr       */
+/*   Updated: 2021/11/20 19:18:36 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ public:
     ~Contact(void);
 
     int init(void);
+    int autofill(void);
 };
 
 #endif
