@@ -2,9 +2,11 @@
 SRCS_DIR			= .
 SRCS_FILES			= 	\
 						main.cpp \
+						Karen.cpp \
 
 
 HEAD_FILES			= \
+						Karen.hpp \
 
 SRCS				= $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 INCLUDES			= -I .
