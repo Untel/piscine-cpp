@@ -20,8 +20,6 @@ all:
 $(NAME):			$(OBJS)
 					$(CC) $(OBJS) $(LIBS) -o $(NAME)
 
-bonus:				all
-
 run:				all
 					./$(NAME) $(ARGS)
 
