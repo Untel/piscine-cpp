@@ -141,7 +141,7 @@ void
 	Account::_displayTimestamp(void)
 {
 	# ifdef DEBUG
-		std::cout << "[20150406_153629] ";
+		std::cout << "[19920104_091532] ";
 		return ;
 	# else
 		time_t		timestamp;
@@ -149,7 +149,7 @@ void
 
 		time(&timestamp);
 		strftime(buff, sizeof(buff), "%Y%m%d_%H%M%S", localtime(&timestamp));
-		std::cout << "[" << buff << "]";
+		std::cout << "[" << buff << "] ";
 	#endif
 }
 
@@ -158,5 +158,5 @@ void
 // -*- indent-tabs-mode:t;                                                   -*-
 // -*- mode: c += 1-mode;                                                       -*-
 // -*- fill-column: 75; comment-column: 75;                                  -*-
-// His boss is still a dick                                                          //
+// His boss is still a dick                                                   //
 // ************************************************************************** //
