@@ -6,7 +6,7 @@ SRCS_FILES			= 	\
 SRCS				= $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 INCLUDES			= -I .
 LIBS				= 
-CC					= clang++
+CXX					= c++
 OPTS				= 
 CXXFLAGS			= -std=c++98 -Wall -Wextra -Werror ${OPTS} $(INCLUDES)
 OBJS				= $(SRCS:.cpp=.o)
@@ -18,7 +18,7 @@ all:
 					@$(MAKE) $(NAME)
 
 $(NAME):			$(OBJS)
-					$(CC) $(OBJS) $(LIBS) -o $(NAME)
+					$(CXX) $(OBJS) $(LIBS) -o $(NAME)
 
 run:				all
 					./$(NAME) $(ARGS)

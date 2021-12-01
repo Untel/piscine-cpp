@@ -1,8 +1,6 @@
 
 SRCS_DIR			= .
 SRCS_FILES			= 	\
-						Account.class.cpp \
-						tests.cpp \
 
 HEAD_FILES			= \
 						Account.class.hpp \
