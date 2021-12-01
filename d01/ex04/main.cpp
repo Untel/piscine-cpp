@@ -27,6 +27,7 @@ int
     std::ifstream   reader(av[1]);
     if (reader.fail())
         std::cout << "Fail to open file " << in_file << std::endl;
+    
     std::cout << "open? " << reader.is_open() << std::endl;
     std::cout << "fail? " << reader.fail() << std::endl;
 }
