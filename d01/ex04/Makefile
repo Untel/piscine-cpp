@@ -5,7 +5,6 @@ SRCS_FILES			= 	\
 
 
 HEAD_FILES			= \
-					sed.hpp \
 
 SRCS				= $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 INCLUDES			= -I .
