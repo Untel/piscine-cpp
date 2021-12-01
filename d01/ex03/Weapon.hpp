@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/17 20:54:41 by commetuveux       #+#    #+#             */
-/*   Updated: 2021/12/01 06:28:53 by adda-sil         ###   ########.fr       */
+/*   Created: 2021/12/01 06:33:31 by adda-sil          #+#    #+#             */
+/*   Updated: 2021/12/01 06:42:53 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
 # include <iostream>
-# include <sstream>
-# include "Contact.class.hpp"
+
+class Weapon {
+
+    private:
+        std::string	_type;
+
+    public:
+        Weapon(std::string type);
+        ~Weapon();
+
+        const std::string   &getType();
+        void                setType(std::string type);
+};
+
 #endif

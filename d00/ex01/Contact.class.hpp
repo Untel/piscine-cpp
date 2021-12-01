@@ -6,12 +6,12 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/17 21:28:52 by commetuveux       #+#    #+#             */
-/*   Updated: 2021/12/01 04:25:01 by adda-sil         ###   ########.fr       */
+/*   Updated: 2021/12/01 06:28:58 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_CLASS_H
-# define CONTACT_CLASS_H
+#ifndef CONTACT_CLASS_HPP
+# define CONTACT_CLASS_HPP
 # include <iostream>
 class Contact {
 
