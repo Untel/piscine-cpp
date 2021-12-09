@@ -12,10 +12,20 @@
 
 #include "Karen.hpp"
 
-// Karen::Karen()
-// {
-    // void (Karen::*f)(void);
-// }
+Karen::Karen()
+{
+    this->levels[DEBUG].label = "DEBUG";
+    this->levels[DEBUG].fn = &Karen::debug;
+
+    this->levels[INFO].label = "INFO";
+    this->levels[INFO].fn = &Karen::info;
+
+    this->levels[WARNING].label = "WARNING";
+    this->levels[WARNING].fn = &Karen::warning;
+
+    this->levels[ERROR].label = "ERROR";
+    this->levels[ERROR].fn = &Karen::error;
+}
 
 // Karen::~Karen()
 // {}
@@ -66,9 +76,12 @@ void
 void
     Karen::complain(std::string level)
 {
-    std::cout << "Complain " << level << std::endl;
-    this->debug();
-    this->info();
-    this->warning();
-    this->error();
+    std::transform(level.begin(), level.end(), level.begin(), ::toupper);
+	for (int i = 0; i < LEVEL_COUNT; i++) {
+		if (this->levels[i].label == level)
+			return (this->*levels[i].fn)();
+	}
+	std::cout << BOLDMAGENTA;
+    std::cout << "[ Probably complaining about insignificant problems ]";
+	std::cout << RESET << std::endl;
 }
