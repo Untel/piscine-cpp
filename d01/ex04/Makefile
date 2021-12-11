@@ -14,7 +14,7 @@ OPTS				=
 CXXFLAGS			= -std=c++98 -Wall -Wextra -Werror ${OPTS} $(INCLUDES) -MMD
 OBJS				= $(SRCS:.cpp=.o)
 NAME				= sed
-ARGS				= maia.test 
+ARGS				= .0.test a b
 OBJ_DIR				= objs
 DEP 				= $(OBJS:.o=.d)
 
@@ -22,14 +22,13 @@ all:
 					@$(MAKE) $(NAME)
 
 $(NAME):			$(OBJS) ${HEAD_FILES}
-					$(CXX) $(OBJS) $(LIBS) -o $(NAME)
+					$(CXX) $(CXXFLAGS) $(OBJS) $(LIBS) -o $(NAME)
 
 -include $(DEP)
 
 run:				all
 					./$(NAME) $(ARGS)
 
-test:				all
 # ./sed .0.test "$(cat .1.test)" lala
 
 clean:

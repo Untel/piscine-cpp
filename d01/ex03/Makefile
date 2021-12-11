@@ -28,7 +28,7 @@ all:
 					@$(MAKE) $(NAME)
 
 $(NAME):			$(OBJS) ${HEAD_FILES}
-					$(CXX) $(OBJS) $(LIBS) -o $(NAME)
+					$(CXX) $(CXXFLAGS) $(OBJS) $(LIBS) -o $(NAME)
 
 -include $(DEP)
 

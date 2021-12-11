@@ -18,7 +18,7 @@ all:
 					@$(MAKE) $(NAME)
 
 $(NAME):			$(OBJS)
-					$(CXX) $(OBJS) $(LIBS) -o $(NAME)
+					$(CXX) $(CXXFLAGS) $(OBJS) $(LIBS) -o $(NAME)
 
 run:				all
 					./$(NAME) $(ARGS)
