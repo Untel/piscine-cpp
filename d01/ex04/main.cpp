@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 07:21:34 by adda-sil          #+#    #+#             */
-/*   Updated: 2021/12/11 18:45:26 by adda-sil         ###   ########.fr       */
+/*   Updated: 2021/12/11 23:59:19 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int
     }
     size_t idx = 0;
     while ((idx = buffer.find(s1, idx)) != std::string::npos) {
-        std::cout << "iter " << idx << std::endl;
         buffer.replace(idx, s1.length(), s2);
         idx += s1.length();
     }
