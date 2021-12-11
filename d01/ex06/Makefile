@@ -15,7 +15,7 @@ CXX					= c++
 OPTS				=
 CXXFLAGS			= -std=c++98 -Wall -Wextra -Werror ${OPTS} $(INCLUDES) -MMD
 OBJS				= $(SRCS:.cpp=.o)
-NAME				= karen
+NAME				= karenFilter
 ARGS				= 
 OBJ_DIR				= objs
 DEP 				= $(OBJS:.o=.d)

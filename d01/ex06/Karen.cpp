@@ -14,6 +14,7 @@
 
 Karen::Karen()
 {
+    std::cout << "Constructor\n";
     this->levels[DEBUG].label = "DEBUG";
     this->levels[DEBUG].fn = &Karen::debug;
     this->levels[INFO].label = "INFO";
@@ -22,6 +23,12 @@ Karen::Karen()
     this->levels[WARNING].fn = &Karen::warning;
     this->levels[ERROR].label = "ERROR";
     this->levels[ERROR].fn = &Karen::error;
+}
+
+Karen::Karen(std::string filter)
+{
+
+    std::cout << "Overload constructor\n";
 }
 
 void
@@ -71,7 +78,7 @@ void
     Karen::complain(std::string level)
 {
     std::transform(level.begin(), level.end(), level.begin(), ::toupper);
-	for (int i = 0; i < LEVEL_COUNT; i++) {
+	for (int i = this.filter; i < LEVEL_COUNT; i++) {
 		if (this->levels[i].label == level)
 			return (this->*levels[i].fn)();
 	}

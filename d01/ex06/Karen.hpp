@@ -42,12 +42,14 @@ typedef struct  s_level
 class Karen {
     private:
         t_level levels[LEVEL_COUNT];
+        int     filter;
         void    debug(void);
         void    info(void);
         void    warning(void);
         void    error(void);
     public:
         Karen();
+        Karen(std::string filter);
         void    complain(std::string level);
 };
 
