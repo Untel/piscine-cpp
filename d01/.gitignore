@@ -1,0 +1,11 @@
+**/*.o
+**/*.d
+sed
+ex00/zombie
+ex01/cmp
+ex01/zombie
+ex02/stringref
+ex03/humans
+ex04/sed
+ex05/karen
+ex06/karenFilter

@@ -2,7 +2,6 @@
 # define KAREN_HPP
 
 # include <iostream>
-# include <algorithm>
 # include <string>
 
 # define RESET       "\033[0m"
@@ -27,7 +26,7 @@
 class Karen;
 
 enum {
-    DEBUG,
+    DEBUG = 0,
     INFO,
     WARNING,
     ERROR,

@@ -32,12 +32,6 @@ $(NAME):			$(OBJS) ${HEAD_FILES}
 run:				all
 					./$(NAME) $(ARGS)
 
-test:				
-					@$(MAKE) OPTS="-D DEBUG" re
-					./$(NAME) $(ARGS) > cmp
-					diff 19920104_091532.log cmp
-					rm -f ./a.out ./cmp
-
 clean:
 					$(RM) $(OBJS)
 
