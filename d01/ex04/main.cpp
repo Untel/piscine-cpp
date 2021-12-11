@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 07:21:34 by adda-sil          #+#    #+#             */
-/*   Updated: 2021/12/09 17:14:47 by adda-sil         ###   ########.fr       */
+/*   Updated: 2021/12/11 18:10:21 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,15 @@ int
     }
     std::string     buffer;
     std::string     out_file(in_file + ".replace");
-
     std::ofstream   writer;
     std::string     s1(av[2]);
     std::string     s2(av[3]);
     writer.open(out_file.c_str());
-    while (std::getline(reader, buffer))
+    if (writer.fail()) {
+        std::cout << "Fail to open file " << out_file << std::endl;
+        return (1);
+    }
+    while (std::getline(reader, buffer, char(reader.eof())))
     {
         size_t idx = 0;
         while ((idx = buffer.find(s1, idx)) != std::string::npos) {

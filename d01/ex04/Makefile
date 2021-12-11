@@ -14,7 +14,7 @@ OPTS				=
 CXXFLAGS			= -std=c++98 -Wall -Wextra -Werror ${OPTS} $(INCLUDES) -MMD
 OBJS				= $(SRCS:.cpp=.o)
 NAME				= sed
-ARGS				= test e ee
+ARGS				= maia.test 
 OBJ_DIR				= objs
 DEP 				= $(OBJS:.o=.d)
 
