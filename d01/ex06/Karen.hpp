@@ -2,7 +2,6 @@
 # define KAREN_HPP
 
 # include <iostream>
-# include <algorithm>
 # include <string>
 
 # define RESET       "\033[0m"
@@ -26,8 +25,8 @@
 
 class Karen;
 
-enum {
-    DEBUG,
+enum levels {
+    DEBUG = 0,
     INFO,
     WARNING,
     ERROR,
@@ -42,14 +41,13 @@ typedef struct  s_level
 class Karen {
     private:
         t_level levels[LEVEL_COUNT];
-        int     filter;
         void    debug(void);
         void    info(void);
         void    warning(void);
         void    error(void);
     public:
         Karen();
-        Karen(std::string filter);
+        int     getComplainIdx(std::string level);
         void    complain(std::string level);
 };
 
