@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 07:21:34 by adda-sil          #+#    #+#             */
-/*   Updated: 2021/12/11 18:10:21 by adda-sil         ###   ########.fr       */
+/*   Updated: 2021/12/11 18:45:26 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,29 @@ int
     std::ofstream   writer;
     std::string     s1(av[2]);
     std::string     s2(av[3]);
+    std::getline(reader, buffer, '\0');
+    if (reader.fail()) {
+        std::cout << "Fail to read file " << in_file << std::endl;
+        return (1);
+    }
     writer.open(out_file.c_str());
     if (writer.fail()) {
         std::cout << "Fail to open file " << out_file << std::endl;
         return (1);
     }
-    while (std::getline(reader, buffer, char(reader.eof())))
-    {
-        size_t idx = 0;
-        while ((idx = buffer.find(s1, idx)) != std::string::npos) {
-            buffer.replace(idx, s1.length(), s2);
-            idx += s2.length();
-        }
-        writer << buffer;
-        if (!reader.eof())
-            writer << std::endl;
+    if (!s1.length()) {
+        std::cout << "S1 cannot be empty" << out_file << std::endl;
+        return (1);
     }
+    size_t idx = 0;
+    while ((idx = buffer.find(s1, idx)) != std::string::npos) {
+        std::cout << "iter " << idx << std::endl;
+        buffer.replace(idx, s1.length(), s2);
+        idx += s1.length();
+    }
+    writer << buffer;
+    if (!reader.eof())
+        writer << std::endl;
     writer.close();
     reader.close();
     return (0);

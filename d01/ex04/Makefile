@@ -29,6 +29,9 @@ $(NAME):			$(OBJS) ${HEAD_FILES}
 run:				all
 					./$(NAME) $(ARGS)
 
+test:				all
+# ./sed .0.test "$(cat .1.test)" lala
+
 clean:
 					$(RM) $(OBJS)
 					$(RM) $(DEPS)
