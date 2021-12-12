@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 00:17:35 by adda-sil          #+#    #+#             */
-/*   Updated: 2021/12/12 22:39:32 by adda-sil         ###   ########.fr       */
+/*   Updated: 2021/12/12 23:55:35 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,16 @@ Fixed::~Fixed()
     std::cout << "Destructor called" << std::endl;
 }
 
-Fixed &Fixed::operator= (const Fixed &f)
+Fixed
+    &Fixed::operator = (const Fixed &f)
 {
     std::cout << "Assignation operator called" << std::endl;
     this->_value = (f.getRawBits());
     return *this;
 }
 
-std::ostream& operator<< (std::ostream &out, const Fixed &f)
+std::ostream
+    &operator << (std::ostream &out, const Fixed &f)
 {
 	out << f.toFloat();
 	return out;
