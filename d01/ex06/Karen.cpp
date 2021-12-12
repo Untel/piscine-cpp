@@ -14,7 +14,6 @@
 
 Karen::Karen()
 {
-    std::cout << "Constructor\n";
     this->levels[DEBUG].label = "DEBUG";
     this->levels[DEBUG].fn = &Karen::debug;
     this->levels[INFO].label = "INFO";

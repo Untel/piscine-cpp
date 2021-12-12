@@ -2,9 +2,11 @@
 SRCS_DIR			= .
 SRCS_FILES			= 	\
 						main.cpp \
+						Fixed.cpp \
 
 
 HEAD_FILES			= \
+						Fixed.hpp \
 
 SRCS				= $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 INCLUDES			= -I .
@@ -13,8 +15,8 @@ CXX					= c++
 OPTS				=
 CXXFLAGS			= -std=c++98 -Wall -Wextra -Werror ${OPTS} $(INCLUDES) -MMD
 OBJS				= $(SRCS:.cpp=.o)
-NAME				= replace
-ARGS				= .0.test a b
+NAME				= fixed
+ARGS				= 
 OBJ_DIR				= objs
 DEP 				= $(OBJS:.o=.d)
 
@@ -28,8 +30,6 @@ $(NAME):			$(OBJS) ${HEAD_FILES}
 
 run:				all
 					./$(NAME) $(ARGS)
-
-# ./sed .0.test "$(cat .1.test)" lala
 
 clean:
 					$(RM) $(OBJS)
