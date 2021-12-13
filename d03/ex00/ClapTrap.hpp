@@ -19,7 +19,7 @@
 class ClapTrap;
 
 class ClapTrap {
-    private:
+    protected:
         std::string             _name;
         int                     _hit_points;
         int                     _energy_points;
@@ -28,5 +28,6 @@ class ClapTrap {
         ClapTrap               (const ClapTrap &f);
         ~ClapTrap              ();
 };
+
 
 #endif
