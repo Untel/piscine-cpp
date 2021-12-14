@@ -17,7 +17,11 @@
 # include "ClapTrap.hpp"
 # include <string>
 
-class ScavTrap : public ClapTrap {
+class ScavTrap : virtual public ClapTrap {
+    protected:
+        static unsigned int const   scav_hp = 100;
+        static unsigned int const   scav_ep = 50;
+        static unsigned int const   scav_ad = 20;
     public:
         ScavTrap                (std::string name);
         ~ScavTrap               ();

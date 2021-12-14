@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*   DiamondTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,22 +10,32 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "DiamondTrap.hpp"
 
-ScavTrap::ScavTrap(std::string name) :
-    ClapTrap(name)
+DiamondTrap::DiamondTrap(std::string name) :
+    ClapTrap(name + "_clap_name"),
+    ScavTrap(name),
+    FragTrap(name),
+    _name(name)
 {
-    this->_hp = 100;
-    this->_ep = 50;
-    this->_ad = 20;
-    std::cout << "ScavTrap Constructor of " << this->_name << " called." << std::endl;
+    this->_hp = FragTrap::frag_hp;
+    this->_ep = ScavTrap::scav_ep;
+    this->_ad = FragTrap::frag_ad;
+    std::cout << "DiamondTrap Constructor of " << this->_name << " called." << std::endl;
 }
 
-ScavTrap::~ScavTrap() {
-    std::cout << "ScavTrap Destructor of " << this->_name << " called." << std::endl;
+
+DiamondTrap::~DiamondTrap() {
+    std::cout << "DiamondTrap Destructor of " << this->_name << " called." << std::endl;
+}
+
+
+void
+    DiamondTrap::attack(std::string const &target) {
+    ScavTrap::attack(target);
 }
 
 void
-    ScavTrap::guardGate (void) {
-    std::cout << "ScavTrap " << this->_name << " have enterred in Gate Keeper mode." << std::endl;
+    DiamondTrap::whoAmI(void) {
+    std::cout << "DiamondTrap name " << this->_name << " but ClapTrap name " << ClapTrap::_name << " !" << std::endl;  
 }

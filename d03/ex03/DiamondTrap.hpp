@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                          :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/12 00:17:40 by adda-sil          #+#    #+#             */
-/*   Updated: 2021/12/12 23:36:50 by adda-sil         ###   ########.fr       */
+/*   Created: 2021/12/14 14:19:42 by adda-sil          #+#    #+#             */
+/*   Updated: 2021/12/14 15:19:02 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#ifndef DIAMONDTRAP_HPP
+# define DIAMONDTRAP_HPP
 
 # include <iostream>
-# include "ClapTrap.hpp"
+# include "ScavTrap.hpp"
+# include "FragTrap.hpp"
 # include <string>
 
-class ScavTrap : public ClapTrap {
+class DiamondTrap : virtual public ScavTrap, virtual public FragTrap {
+    private:
+        std::string                  _name;
     public:
-        ScavTrap                (std::string name);
-        ~ScavTrap               ();
-        void guardGate          (void);
+        DiamondTrap                 (std::string name);
+        ~DiamondTrap                ();
+        void attack                 (std::string const &target);
+        void whoAmI                 (void);
 };
 
 #endif
