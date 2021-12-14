@@ -4,10 +4,13 @@ SRCS_FILES			= 	\
 						main.cpp \
 						ClapTrap.cpp \
 						ScavTrap.cpp \
+						FragTrap.cpp \
 
 
 HEAD_FILES			= \
+						ClapTrap.hpp \
 						ScavTrap.hpp \
+						FragTrap.hpp \
 
 SRCS				= $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 INCLUDES			= -I .
@@ -16,7 +19,7 @@ CXX					= c++
 OPTS				=
 CXXFLAGS			= -std=c++98 -Wall -Wextra -Werror ${OPTS} $(INCLUDES) -MMD
 OBJS				= $(SRCS:.cpp=.o)
-NAME				= scavTrap
+NAME				= fragTrap
 ARGS				= 
 OBJ_DIR				= objs
 DEP 				= $(OBJS:.o=.d)

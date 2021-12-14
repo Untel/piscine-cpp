@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/12 00:17:40 by adda-sil          #+#    #+#             */
-/*   Updated: 2021/12/12 23:36:50 by adda-sil         ###   ########.fr       */
+/*   Created: 2021/12/12 00:17:45 by adda-sil          #+#    #+#             */
+/*   Updated: 2021/12/14 07:17:04 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#include <iostream>
+#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-# include <iostream>
-# include "ClapTrap.hpp"
-# include <string>
+int
+    main(void)
+{
+    ScavTrap a("Optimus Prime");
+    FragTrap b("Bluestreak");
 
-class ScavTrap : public ClapTrap {
-    public:
-        ScavTrap                (std::string name);
-        ~ScavTrap               ();
-        void guardGate          (void);
-};
-
-#endif
+    a.attack(b.getName());
+    b.takeDamage(a.getAttackDamage());
+    b.beRepaired(b.getEnergyPoints());
+    a.guardGate();
+    b.highFivesGuys();
+    return (0);
+}

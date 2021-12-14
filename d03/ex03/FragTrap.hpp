@@ -10,18 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
 # include <iostream>
-# include "ClapTrap.hpp"
 # include <string>
+# include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap {
+class FragTrap : public ClapTrap {
     public:
-        ScavTrap                (std::string name);
-        ~ScavTrap               ();
-        void guardGate          (void);
+        FragTrap                (std::string name);
+        ~FragTrap               ();
+        void highFivesGuys      (void);
 };
 
 #endif
