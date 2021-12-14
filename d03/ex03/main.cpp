@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 00:17:45 by adda-sil          #+#    #+#             */
-/*   Updated: 2021/12/14 15:03:56 by adda-sil         ###   ########.fr       */
+/*   Updated: 2021/12/14 16:47:38 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ int
 {
     DiamondTrap a("Bee");
     a.whoAmI();
+    a.guardGate(); // clap_name
+    a.highFivesGuys(); // clap_name
     // FragTrap b("Bluestreak");
 
-    // a.attack(b.getName());
+    a.attack("Jean");
     // b.takeDamage(a.getAttackDamage());
     // b.beRepaired(b.getEnergyPoints());
     // a.guardGate();

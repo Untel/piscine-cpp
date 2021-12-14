@@ -22,6 +22,7 @@ class ScavTrap : public ClapTrap {
         ScavTrap                (std::string name);
         ~ScavTrap               ();
         void guardGate          (void);
+        void attack             (std::string const &target);
 };
 
 #endif
