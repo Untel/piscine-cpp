@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 00:17:35 by adda-sil          #+#    #+#             */
-/*   Updated: 2021/12/14 07:09:39 by adda-sil         ###   ########.fr       */
+/*   Updated: 2021/12/21 20:56:49 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 ClapTrap::ClapTrap(std::string name) :
     _name(name),
-    _hp(10),
-    _ep(10),
-    _ad(0) {
+    _hitpoints(10),
+    _energy(10),
+    _attack_damage(0) {
     std::cout << "ClapTrap Constructor of " << this->_name << " called." << std::endl;
 }
 
@@ -35,45 +35,47 @@ void
 }
 unsigned int
     ClapTrap::getHitPoints() const {
-    return this->_hp;
+    return this->_hitpoints;
 }
 void
     ClapTrap::setHitPoints(unsigned int hp) {
-    this->_hp = hp;
+    this->_hitpoints = hp;
 }
 unsigned int
     ClapTrap::getEnergyPoints() const {
-    return this->_ep;
+    return this->_energy;
 }
 void
     ClapTrap::setEnergyPoints(unsigned int ep) {
-    this->_ep = ep;
+    this->_energy = ep;
 }
 unsigned int
     ClapTrap::getAttackDamage() const {
-    return this->_ad;
+    return this->_attack_damage;
 }
 void
     ClapTrap::setAttackDamage(unsigned int ad) {
-    this->_ad = ad;
+    this->_attack_damage = ad;
 }
 
 void
     ClapTrap::attack(std::string const &target) {
-    std::cout << "Claptrap " << this->_name << " attack " << target << ", causing " << _ad << " points of damage!" << std::endl;
+    std::cout << "Claptrap " << this->_name << " attack " << target << ", causing " << this->_attack_damage << " points of damage!" << std::endl;
 }
+
 void
     ClapTrap::takeDamage(unsigned int amount) {
-    if (this->_hp - amount > 0) {
-        this->_hp -= amount;
-        std::cout << "Claptrap " << this->_name << " took " << amount << " damages (" << this->_hp << " hps left)" << std::endl;
+    if (this->_hitpoints - amount > 0) {
+        this->_hitpoints -= amount;
+        std::cout << "Claptrap " << this->_name << " took " << amount << " damages (" << this->_hitpoints << " hps left)" << std::endl;
     } else {
-        this->_hp = 0;
+        this->_hitpoints = 0;
         std::cout << "Claptrap " << this->_name << " died after taking " << amount << " points of damage !" << std::endl;
     }
 }
+
 void
     ClapTrap::beRepaired(unsigned int amount) {
-    this->_hp += amount;
-    std::cout << "Claptrap " << this->_name << " repaired " << amount << " hps. (Now " << this->_hp << " hit points)" << std::endl;
+    this->_hitpoints += amount;
+    std::cout << "Claptrap " << this->_name << " repaired " << amount << " hps. (Now " << this->_hitpoints << " hit points)" << std::endl;
 }

@@ -18,9 +18,9 @@ DiamondTrap::DiamondTrap(std::string name) :
     FragTrap(name),
     _name(name)
 {
-    this->_hp = FragTrap::frag_hp;
-    this->_ep = ScavTrap::scav_ep;
-    this->_ad = FragTrap::frag_ad;
+    this->_hitpoints = FragTrap::frag_hp;
+    this->_energy = ScavTrap::scav_ep;
+    this->_attack_damage = FragTrap::frag_ad;
     std::cout << "DiamondTrap Constructor of " << this->_name << " called." << std::endl;
 }
 

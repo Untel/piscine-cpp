@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 00:17:35 by adda-sil          #+#    #+#             */
-/*   Updated: 2021/12/14 15:15:04 by adda-sil         ###   ########.fr       */
+/*   Updated: 2021/12/21 20:50:04 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 FragTrap::FragTrap(std::string name) :
     ClapTrap(name)
 {
-    this->_hp = FragTrap::frag_hp;
-    this->_ep = FragTrap::frag_ep;
-    this->_ad = FragTrap::frag_ad;
+    this->_hitpoints = FragTrap::frag_hp;
+    this->_energy = FragTrap::frag_ep;
+    this->_attack_damage = FragTrap::frag_ad;
     std::cout << "FragTrap Constructor of " << this->_name << " called." << std::endl;
 }
 

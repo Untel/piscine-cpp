@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 00:17:45 by adda-sil          #+#    #+#             */
-/*   Updated: 2021/12/14 07:07:48 by adda-sil         ###   ########.fr       */
+/*   Updated: 2021/12/21 21:02:51 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@
 int
     main(void)
 {
-    ScavTrap a("Optimus Prime");
+    ClapTrap a("Optimus Prime");
     ScavTrap b("Bluestreak");
 
-    a.attack(b.getName());
     b.takeDamage(a.getAttackDamage());
     b.beRepaired(b.getEnergyPoints());
+    a.attack(b.getName());
+    b.attack(a.getName());
     b.guardGate();
     return (0);
 }
