@@ -14,6 +14,7 @@ Dog::Dog( const Dog & src )
 	: Animal(src.getType())
 {
 	std::cout << "<Dog> copy constructor" << std::endl;
+	*this = src;
 }
 
 

@@ -9,18 +9,18 @@
 class Dog : public Animal {
 
 	public:
-
 		Dog();
 		Dog( Dog const & src );
 		virtual ~Dog();
 
 		Dog &			operator=( Dog const & rhs );
 		virtual void	makeSound() const;
+		Brain			*getBrain() const;
 
 	private:
-		Brain 		*brain;
+		Brain 			*brain;
 };
 
-std::ostream &			operator<<( std::ostream & o, Dog const & i );
+std::ostream &operator << (std::ostream & o, const Dog &i);
 
 #endif /* ************************************************************* DOG_H */

@@ -1,11 +1,13 @@
 #include "Cat.hpp"
+#include "Brain.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Cat::Cat()
-	: Animal("Cat")
+Cat::Cat() :
+	Animal("Cat"),
+	brain(new Brain())
 {
 	std::cout << "<Cat> constructor" << std::endl;
 }
@@ -14,6 +16,7 @@ Cat::Cat( const Cat & src )
 	: Animal(src.getType())
 {
 	std::cout << "<Cat> copy constructor" << std::endl;
+	*this = src;
 }
 
 
@@ -23,6 +26,7 @@ Cat::Cat( const Cat & src )
 
 Cat::~Cat()
 {
+	delete this->brain;
 	std::cout << "<Cat> destructor" << std::endl;
 }
 
@@ -54,6 +58,11 @@ std::ostream &			operator<<( std::ostream & o, Cat const & i )
 void
 	Cat::makeSound() const {
 	std::cout << "<Cat> meeeeow" << std::endl;
+}
+
+Brain
+	*Cat::getBrain() const {
+	return this->brain;
 }
 
 /*

@@ -14,8 +14,8 @@ Cat::Cat( const Cat & src )
 	: Animal(src.getType())
 {
 	std::cout << "<Cat> copy constructor" << std::endl;
+	*this = src;
 }
-
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------

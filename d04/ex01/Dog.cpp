@@ -4,16 +4,18 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Dog::Dog()
-	: Animal("Dog")
+Dog::Dog() :
+	Animal("Dog"),
+	brain(new Brain())
 {
 	std::cout << "<Dog> constructor" << std::endl;
 }
 
-Dog::Dog( const Dog & src )
-	: Animal(src.getType())
+Dog::Dog( const Dog & src ) :
+	Animal(src.getType())
 {
 	std::cout << "<Dog> copy constructor" << std::endl;
+	*this = src;
 }
 
 
@@ -23,6 +25,7 @@ Dog::Dog( const Dog & src )
 
 Dog::~Dog()
 {
+	delete this->brain;
 	std::cout << "<Dog> destructor" << std::endl;
 }
 
@@ -31,18 +34,19 @@ Dog::~Dog()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-Dog &				Dog::operator=( Dog const & rhs )
+Dog &Dog::operator = (Dog const & rhs)
 {
 	std::cout << "<Dog> assignation operator" << std::endl;
 
 	if ( this != &rhs )
 	{
 		this->type = rhs.getType();
+		this->brain = new Brain(*rhs.brain);
 	}
 	return *this;
 }
 
-std::ostream &			operator<<( std::ostream & o, Dog const & i )
+std::ostream &operator << (std::ostream &o, const Dog &i)
 {
 	o << "<Dog> type = " << i.getType();
 	return o;
@@ -55,6 +59,11 @@ std::ostream &			operator<<( std::ostream & o, Dog const & i )
 void
 	Dog::makeSound() const {
 	std::cout << "<Dog> ouaf ouaf" << std::endl;
+}
+
+Brain
+	*Dog::getBrain() const {
+	return this->brain;
 }
 
 /*

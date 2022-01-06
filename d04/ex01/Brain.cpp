@@ -30,7 +30,7 @@ Brain::~Brain()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-Brain &				Brain::operator=( Brain const & rhs )
+Brain &				Brain::operator = ( Brain const & rhs )
 {
 	std::cout << "<Brain> assignation operator" << std::endl;
 
@@ -42,11 +42,12 @@ Brain &				Brain::operator=( Brain const & rhs )
 	return *this;
 }
 
-std::ostream &			operator<<( std::ostream & o, Brain const & b )
+std::ostream &			operator << ( std::ostream & o, Brain const & b )
 {
-	for (int i = 0; !b.ideas[i].empty(); i++) {
-		o << b.ideas[i] << ", ";
-	}
+	o << "<Brain> " << this->getStringifiedIdeas() << std::endl;
+	// for (int i = 0; i < 100 && !b.ideas[i].empty(); i++) {
+	// 	o << b.ideas[i] << ", ";
+	// }
 	return o;
 }
 
@@ -55,6 +56,32 @@ std::ostream &			operator<<( std::ostream & o, Brain const & b )
 ** --------------------------------- METHODS ----------------------------------
 */
 
+int
+	Brain::getIdeasCount() const {
+	int i = 0;
+	while (i < 100 && !this->ideas[i].empty())
+		i++;
+	return i;
+}
+
+void
+	Brain::addIdea(std::string idea) {
+		int len = this->getIdeasCount();
+
+		if (len < 100)
+			this->ideas[len] = idea;
+}
+
+std::string
+	Brain::getStringifiedIdeas(void) const {
+		int len = this->getIdeasCount();
+		for (int i = 0; i < len; i++) {
+			ideasStr.append(this->ideas[i]);
+			if (i < len)
+				ideasStr.append(", ");
+		}
+	return ideasStr;
+}
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------

@@ -23,7 +23,7 @@ INCLUDES			= -I .
 LIBS				= 
 CXX					= c++
 OPTS				=
-CXXFLAGS			= -std=c++98 -Wall -Wextra -Werror -Wshadow -Wno-shadow ${OPTS} $(INCLUDES) -MMD
+CXXFLAGS			= -std=c++98 -Wall -Wextra -Werror ${OPTS} $(INCLUDES) -MMD
 OBJS				= $(SRCS:.cpp=.o)
 NAME				= brain
 ARGS				= 
