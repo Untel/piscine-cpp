@@ -1,0 +1,7 @@
+**/*.o
+**/*.d
+ex00/clapTrap
+ex01/scavTrap
+ex02/fragTrap
+ex03/diamondTrap
+*.subject.pdf

@@ -21,7 +21,7 @@ CXX					= c++
 OPTS				=
 CXXFLAGS			= -std=c++98 -Wall -Wextra -Werror -Wshadow -Wno-shadow ${OPTS} $(INCLUDES) -MMD
 OBJS				= $(SRCS:.cpp=.o)
-NAME				= fragTrap
+NAME				= diamondTrap
 ARGS				= 
 OBJ_DIR				= objs
 DEP 				= $(OBJS:.o=.d)
