@@ -44,10 +44,15 @@ Brain &				Brain::operator = ( Brain const & rhs )
 
 std::ostream &			operator << ( std::ostream & o, Brain const & b )
 {
-	o << "<Brain> " << b.getStringifiedIdeas() << std::endl;
-	// for (int i = 0; i < 100 && !b.ideas[i].empty(); i++) {
-	// 	o << b.ideas[i] << ", ";
-	// }
+	int c = b.getIdeasCount();
+	o	<< "<Brain> "
+		<< c
+		<< " idea"
+		<< (c > 1 ? "s" : "")
+		<< ": "
+		<< b.getStringifiedIdeas()
+		<< std::endl
+	;
 	return o;
 }
 
