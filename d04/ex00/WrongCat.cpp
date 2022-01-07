@@ -51,7 +51,10 @@ std::ostream &			operator<<( std::ostream & o, WrongCat const & i )
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
-
+void
+	WrongCat::makeSound() const {
+	std::cout << "<WrongCat> wrong meeeeow" << std::endl;
+}
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------

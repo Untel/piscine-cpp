@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 11:57:30 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/06 13:22:36 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/07 10:51:46 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ int main(void) {
         std::cout << "Wrong test case" << std::endl;
         const WrongAnimal* meta = new WrongAnimal();
         const WrongAnimal* i = new WrongCat();
+        const WrongCat* j = new WrongCat();
         std::cout << i->getType() << " " << std::endl;
         i->makeSound(); //will not output the wrongcat sound!
+        j->makeSound(); //will output the wrongcat sound!
         meta->makeSound();
         // delete meta;
         // delete i;
