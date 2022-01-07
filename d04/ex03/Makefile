@@ -2,14 +2,18 @@
 SRCS_DIR			= .
 SRCS_FILES			= 	\
 						main.cpp \
+						Character.cpp \
 						AMateria.cpp \
 						Cure.cpp \
+						Ice.cpp \
 
 
 HEAD_FILES			= \
 						ICharacter.hpp \
+						Character.hpp \
 						AMateria.hpp \
 						Cure.hpp \
+						Ice.hpp \
 
 SRCS				= $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 INCLUDES			= -I .

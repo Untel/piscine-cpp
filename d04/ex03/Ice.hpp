@@ -4,6 +4,7 @@
 # include <iostream>
 # include <string>
 # include "AMateria.hpp"
+# include "ICharacter.hpp"
 
 class Ice : public AMateria
 {
@@ -16,6 +17,7 @@ class Ice : public AMateria
 
 		Ice &			operator = (Ice const &rhs);
 		Ice *			clone() const;
+		virtual void	use(ICharacter& target);
 };
 
 std::ostream &			operator << ( std::ostream &o, Ice const &i);

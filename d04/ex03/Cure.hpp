@@ -4,6 +4,9 @@
 # include <iostream>
 # include <string>
 # include "AMateria.hpp"
+# include "ICharacter.hpp"
+
+class ICharacter;
 
 class Cure : public AMateria
 {
@@ -15,6 +18,7 @@ class Cure : public AMateria
 
 		Cure &			operator = (Cure const &rhs);
 		Cure *			clone() const;
+		virtual void	use(ICharacter &target);
 };
 
 std::ostream &			operator << (std::ostream &o, Cure const &i);
