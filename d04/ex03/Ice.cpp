@@ -5,11 +5,19 @@
 */
 
 Ice::Ice()
+	: AMateria("ice")
 {
+	#ifdef DEBUG
+		std::cout << "<Ice> Constructor" << std::endl;
+	#endif // DEBUG
 }
 
-Ice::Ice( const Ice & src )
+Ice::Ice(const Ice &src)
+	: AMateria(src)
 {
+	#ifdef DEBUG
+		std::cout << "<Ice> Copy Constructor" << std::endl;
+	#endif // DEBUG
 }
 
 
@@ -19,6 +27,9 @@ Ice::Ice( const Ice & src )
 
 Ice::~Ice()
 {
+	#ifdef DEBUG
+		std::cout << "<Ice> Destructor" << std::endl;
+	#endif // DEBUG
 }
 
 
@@ -26,18 +37,22 @@ Ice::~Ice()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-Ice &				Ice::operator=( Ice const & rhs )
+Ice &
+	Ice::operator=( Ice const & rhs )
 {
-	//if ( this != &rhs )
-	//{
-		//this->_value = rhs.getValue();
-	//}
-	return *this;
+	#ifdef DEBUG
+		std::cout << "<Ice> Assignation Operator" << std::endl;
+	#endif // DEBUG
+	if (this == &rhs)
+		return (*this);
+	AMateria::operator=(rhs);
+	return (*this);
 }
 
-std::ostream &			operator<<( std::ostream & o, Ice const & i )
+std::ostream &
+	operator<<( std::ostream & o, Ice const & i )
 {
-	//o << "Value = " << i.getValue();
+	o << "<Ice> " << i.getType();
 	return o;
 }
 
@@ -45,7 +60,14 @@ std::ostream &			operator<<( std::ostream & o, Ice const & i )
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
-
+Ice *
+	Ice::clone() const
+{
+	#ifdef DEBUG
+		std::cout << "<Ice> Clone Method" << std::endl;
+	#endif // DEBUG
+	return new Ice(*this);
+};
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------

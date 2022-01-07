@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 11:49:04 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/07 12:22:35 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/07 15:48:39 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void testMaterias() {
     Cure *cure = new Cure();
+    Cure *cloneCure = cure->clone();
+    delete cloneCure;
     delete cure;
 }
 

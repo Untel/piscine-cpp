@@ -11,11 +11,9 @@ class Cure : public AMateria
 	public:
 		Cure();
 		Cure(Cure const &src);
-		Cure(Cure &src);
 		virtual ~Cure();
 
 		Cure &			operator = (Cure const &rhs);
-
 		Cure *			clone() const;
 };
 

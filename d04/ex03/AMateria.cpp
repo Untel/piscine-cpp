@@ -28,7 +28,7 @@ AMateria::AMateria(const AMateria &src)
 AMateria::~AMateria()
 {
 	#ifdef DEBUG
-		std::cout << "<AMateria> Destructor Constructor" << std::endl;
+		std::cout << "<AMateria> Destructor" << std::endl;
 	#endif // DEBUG
 }
 

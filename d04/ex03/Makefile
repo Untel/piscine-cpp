@@ -34,6 +34,10 @@ $(NAME):			$(OBJS) ${HEAD_FILES}
 run:				all
 					./$(NAME) $(ARGS)
 
+debug:				all
+					./$(NAME) $(ARGS)
+
+
 clean:
 					$(RM) $(OBJS)
 					$(RM) $(DEPS)

@@ -27,7 +27,7 @@ Cure::Cure(const Cure &src)
 Cure::~Cure()
 {
 	#ifdef DEBUG
-		std::cout << "<Cure> Destructor Constructor" << std::endl;
+		std::cout << "<Cure> Destructor" << std::endl;
 	#endif // DEBUG
 }
 
@@ -65,8 +65,7 @@ Cure *
 	#ifdef DEBUG
 		std::cout << "<Cure> Clone Method" << std::endl;
 	#endif // DEBUG
-	Cure *c = new Cure();
-	return c;
+	return new Cure(*this);
 };
 
 /*
