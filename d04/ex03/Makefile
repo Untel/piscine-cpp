@@ -9,8 +9,8 @@ SRCS_FILES			= 	\
 
 
 HEAD_FILES			= \
-						ICharacter.hpp \
 						Character.hpp \
+						ICharacter.hpp \
 						AMateria.hpp \
 						Cure.hpp \
 						Ice.hpp \

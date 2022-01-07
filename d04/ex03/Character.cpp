@@ -12,14 +12,13 @@ Character::Character(std::string name) :
 	#endif // DEBUG
 }
 
-Character::Character(const Character &src)
+Character::Character(Character const &src)
 {
 	#ifdef DEBUG
 		std::cout << "<Character> Copy Constructor" << std::endl;
 	#endif // DEBUG
 	*this = src;
 }
-
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
@@ -30,6 +29,7 @@ Character::~Character()
 	#ifdef DEBUG
 		std::cout << "<Character> Destructor" << std::endl;
 	#endif // DEBUG
+	this->_clearMaterias();
 }
 
 
@@ -46,7 +46,15 @@ Character &
 	if (this == &rhs)
 		return (*this);
 	this->_name = rhs._name;
-	//this->_inventory = NULL;
+	this->_clearMaterias();
+	for (int i = 0; i < MAX_INVENTORY_SIZE; i++) {
+		if (rhs._inventory[i] != NULL) {
+			#ifdef DEBUG
+				std::cout << "<Character> Assignation copy materia " << i << std::endl;
+			#endif // DEBUG
+			this->_inventory[i] = rhs._inventory[i]->clone();
+		}
+	}
 	return (*this);
 }
 
@@ -62,11 +70,25 @@ std::ostream &
 */
 
 void
+	Character::_clearMaterias(void)
+{
+	for (int i = 0; i < MAX_INVENTORY_SIZE; i++) {
+		if (this->_inventory[i] != NULL) {
+			#ifdef DEBUG
+				std::cout << "<Character> Freeing materia " << this->_inventory[i]->getType() << " at index " << i << std::endl;
+			#endif // DEBUG
+			delete this->_inventory[i];
+			this->_inventory[i] = NULL;
+		}
+	}
+}
+
+void
 	Character::equip(AMateria* m)
 {
 	if (!m) {
 		#ifdef DEBUG
-			std::cout << "<Character> trying to equip an empty materia" << std::endl;
+			std::cout << "<Character> Trying to equip an empty materia" << std::endl;
 		#endif // DEBUG
 		return ;
 	}
@@ -80,10 +102,11 @@ void
 		}
 	}
 	#ifdef DEBUG
-		std::cout << "<Character> equip materia " << m->getType() << " failed" << std::endl;
+		std::cout << "<Character> Equip materia " << m->getType() << " failed" << std::endl;
 	#endif // DEBUG
 	return ;
 }
+
 void
 	Character::unequip(int idx)
 {

@@ -4,6 +4,7 @@
 # include <iostream>
 # include <string>
 # include "ICharacter.hpp"
+# include "AMateria.hpp"
 # define MAX_INVENTORY_SIZE 4
 
 class Character : public ICharacter
@@ -11,6 +12,7 @@ class Character : public ICharacter
 	private:
 		std::string		_name;
 		AMateria *		_inventory[MAX_INVENTORY_SIZE];
+		void			_clearMaterias(void);
 
 	public:
 		Character(std::string name);
