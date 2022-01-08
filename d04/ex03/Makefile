@@ -6,11 +6,14 @@ SRCS_FILES			= 	\
 						AMateria.cpp \
 						Cure.cpp \
 						Ice.cpp \
+						MateriaSource.cpp \
 
 
 HEAD_FILES			= \
 						Character.hpp \
 						ICharacter.hpp \
+						IMateriaSource.hpp \
+						MateriaSource.hpp \
 						AMateria.hpp \
 						Cure.hpp \
 						Ice.hpp \

@@ -8,7 +8,7 @@
 # include "IMateriaSource.hpp"
 # define MAX_TEMPLATE_SIZE 4
 
-class MateriaSource : IMateriaSource
+class MateriaSource : public IMateriaSource
 {
 	private:
 		AMateria *			_templates[MAX_TEMPLATE_SIZE];

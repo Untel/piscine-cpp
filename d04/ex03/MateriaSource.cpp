@@ -9,6 +9,8 @@ MateriaSource::MateriaSource()
 	#ifdef DEBUG
 		std::cout << "<MateriaSource> Constructor" << std::endl;
 	#endif // DEBUG
+	for (int i = 0; i < MAX_TEMPLATE_SIZE; i++)
+		this->_templates[i] = NULL;
 }
 
 MateriaSource::MateriaSource(const MateriaSource &src)
@@ -16,6 +18,7 @@ MateriaSource::MateriaSource(const MateriaSource &src)
 	#ifdef DEBUG
 		std::cout << "<MateriaSource> Copy Constructor" << std::endl;
 	#endif // DEBUG
+	*this = src;
 }
 
 
@@ -59,7 +62,7 @@ MateriaSource &
 std::ostream &
 	operator << (std::ostream &o, MateriaSource const &i)
 {
-	o << "<MateriaSource> " << i;
+	o << "<MateriaSource> " << &i;
 	return o;
 }
 
@@ -110,15 +113,18 @@ void
 AMateria *
 	MateriaSource::createMateria(std::string const &type)
 {
-	if (i < MAX_TEMPLATE_SIZE && this->_inventory[i]) {
-		#ifdef DEBUG
-			std::cout << "<MateriaSource> use materia " << this->_templates[i]->getType() << " from index " << idx << std::endl;
-		#endif // DEBUG
-		return this->_templates[i]->clone();
+	for (int i = 0; i < MAX_TEMPLATE_SIZE; i++) {
+		if (this->_templates[i] && this->_templates[i]->getType() == type) {
+			#ifdef DEBUG
+				std::cout << "<MateriaSource> Found templated materia " << this->_templates[i]->getType() << " from index " << i << std::endl;
+			#endif // DEBUG
+			return this->_templates[i]->clone();
+		}
 	}
 	#ifdef DEBUG
-		std::cout << "<MateriaSource> use materia at index " << idx << " failed" << std::endl;
+		std::cout << "<MateriaSource> No materia found for creation" << std::endl;
 	#endif // DEBUG
+	return NULL;
 }
 
 /*

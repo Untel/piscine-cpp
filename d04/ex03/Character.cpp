@@ -10,6 +10,8 @@ Character::Character(std::string name) :
 	#ifdef DEBUG
 		std::cout << "<Character> Constructor" << std::endl;
 	#endif // DEBUG
+	for (int i = 0; i < MAX_INVENTORY_SIZE; i++)
+		this->_inventory[i] = NULL;
 }
 
 Character::Character(Character const &src)

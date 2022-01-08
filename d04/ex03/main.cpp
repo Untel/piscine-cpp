@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 11:49:04 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/07 20:53:08 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/08 11:45:56 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,8 @@
 #include "Ice.hpp"
 #include "Character.hpp"
 #include "ICharacter.hpp"
-
-
-void wtfMaterias() {
-    Cure *cure = new Cure();
-    Character *adr = new Character("Adrien");
-    Character *jea = new Character("Jean");
-    adr->equip(cure);
-    jea->equip(cure);
-    delete jea; // will delete *cure
-    adr->use(0, *adr); // will segfault because address is still registered
-    delete adr; // Will also segfault because cure is freed twice
-}
+#include "IMateriaSource.hpp"
+#include "MateriaSource.hpp"
 
 void testCharacters() {
     Cure *cure = new Cure();
@@ -57,9 +47,40 @@ void testDeepCopyCharacter() {
     jea->use(0, *jea);
 }
 
+void testMateriaSources() {
+    IMateriaSource *src = new MateriaSource();
+    src->learnMateria(new Ice());
+    src->learnMateria(new Cure());
+
+    AMateria* tmp = src->createMateria("ice");
+    delete tmp;
+    tmp = src->createMateria("yo");
+    (void)tmp;
+}
+
+void subjectCase() {
+    IMateriaSource* src = new MateriaSource();
+    src->learnMateria(new Ice());
+    src->learnMateria(new Cure());
+    ICharacter* me = new Character("me");
+    AMateria* tmp;
+    tmp = src->createMateria("ice");
+    me->equip(tmp);
+    tmp = src->createMateria("cure");
+    me->equip(tmp);
+    ICharacter* bob = new Character("bob");
+    me->use(0, *bob);
+    me->use(1, *bob);
+    delete bob;
+    delete me;
+    delete src;
+}
+
 int main(void) {
     //testMaterias();
-    // testCharacters();
-    testDeepCopyCharacter();
+    //testCharacters();
+    //testDeepCopyCharacter();
+    //testMateriaSources();
+    subjectCase();
     return 0;
 }
