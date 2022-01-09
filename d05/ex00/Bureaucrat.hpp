@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:09:33 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/08 19:09:35 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/09 18:20:25 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,13 @@ class Bureaucrat
 				virtual const char* what() const throw();
 		};
 
+		const static int	max_grade = 1;
+		const static int	min_grade = 150;
+
 	private:
 		const std::string	_name;
 		int					_grade;
 		void				_setGrade(int value);
-		const static int	_max_grade = 1;
-		const static int	_min_grade = 150;
 };
 
 std::ostream &			operator<<( std::ostream & o, Bureaucrat const & i );

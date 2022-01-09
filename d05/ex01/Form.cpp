@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:09:14 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/08 19:46:03 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/09 19:10:13 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,27 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Form::Form(std::string name, int grade) :
-	_name(name)
+Form::Form(std::string name, int sign_grade, int execute_grade) :
+	_name(name),
+	_sign_grade(Form::inRangeValue(sign_grade)),
+	_execute_grade(Form::inRangeValue(execute_grade)),
+	_is_signed(false)
 {
-	this->_setGrade(grade);
 	#ifdef DEBUG
 		std::cout << "<Form> Constructor" << std::endl;
 	#endif // DEBUG
 }
 
-Form::Form( const Form & src ) :
-	_name(src._name)
+Form::Form(const Form &src) :
+	_name(src._name),
+	_sign_grade(Form::inRangeValue(src._sign_grade)),
+	_execute_grade(Form::inRangeValue(src._execute_grade)),
+	_is_signed(src._is_signed)
 {
-	this->_setGrade(src._grade);
 	#ifdef DEBUG
 		std::cout << "<Form> Copy Constructor" << std::endl;
 	#endif // DEBUG
+	(*this) = src;
 }
 
 
@@ -52,24 +57,32 @@ Form::~Form()
 */
 
 Form &
-	Form::operator=( Form const & rhs )
+	Form::operator = ( Form const & rhs )
 {
 	#ifdef DEBUG
 		std::cout << "<Form> Assignation Operator" << std::endl;
 	#endif // DEBUG
 	if (this == &rhs)
 		return (*this);
-	// this->_name = rhs._name // Subject is asking for a constant name, so no reassign here.
+	*(std::string *)&this->_name = rhs._name;
+	*(int *)&this->_sign_grade = Form::inRangeValue(rhs._sign_grade);
+	*(int *)&this->_execute_grade = Form::inRangeValue(rhs._execute_grade);
+	this->_is_signed = rhs._is_signed;
 	return (*this);
 }
 
 std::ostream &
 	operator<<( std::ostream & o, Form const & i )
 {
-	o << "Form "
+	o << "<Form '"
 		<< i.getName()
-		<< " is "
-		<< i.isSigned() ? "signed" : "unsigned"
+		<< "' Sign("
+		<< i.getSignGrade()
+		<< ") Exec("
+		<< i.getExecuteGrade()
+		<< ") Status("
+		<< (i.isSigned() ? "signed" : "unsigned")
+		<< ")>"
 	;
 	return o;
 }
@@ -80,21 +93,43 @@ std::ostream &
 */
 
 void
-	Form::beSigned(Bureaucrat *signer)
+	Form::beSigned(Bureaucrat *signer) throw(Form::GradeTooHightException, Form::GradeTooLowException, Form::StillSignedException)
 {
 	if (this->isSigned()) {
 		throw Form::StillSignedException();
 	}
-	if (signer->getGrade() > this->_sign_grade) {
+	if (*signer < this->_sign_grade) {
 		throw Form::GradeTooLowException();
 	}
+	this->_is_signed = true;
 }
 
 void
-	Form::signForm(Bureaucrat *signer)
+	Form::signForm(Bureaucrat *signer) 
 {
-	this->beSigned(signer);
-	std::cout << "" << std::endl;
+	try {
+		this->beSigned(signer);
+		std::cout << *signer << " signs " << *this << std::endl;
+	} catch (Form::StillSignedException &ex) {
+		std::cout << " ERR MESSAGE: " << ex.what() << std::endl;
+		std::cout << *signer << " cannot sign " << *this << " because the form is still signed" << std::endl;
+	} catch (Form::GradeTooLowException &ex) {
+		std::cout << *signer << " cannot sign " << *this << " because his grade is too low" << std::endl;
+	} catch (Form::GradeTooHightException &ex) {
+		std::cout << *signer << " cannot sign " << *this << " because his grade is too hight" << std::endl;
+	} catch (std::exception &ex) {
+		std::cout << *signer << " cannot sign " << *this << " because " << ex.what() << std::endl;
+	}
+}
+
+int
+	Form::inRangeValue(int value) throw(Form::GradeTooHightException, Form::GradeTooLowException)
+{
+	if (value > Bureaucrat::min_grade)
+		throw Form::GradeTooLowException();
+	else if (value < Bureaucrat::max_grade)
+		throw Form::GradeTooLowException();
+	return value;
 }
 
 /*
@@ -115,8 +150,15 @@ int
 int
 	Form::getExecuteGrade(void) const
 {
-	return this->_sign_grade;
+	return this->_execute_grade;
 }
+
+bool
+	Form::isSigned(void) const
+{
+	return this->_is_signed;
+}
+
 
 /*
 ** -------------------------------- EXCEPTIONS --------------------------------

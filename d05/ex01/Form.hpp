@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:09:07 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/08 19:45:16 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/09 18:57:27 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,6 @@
 class Form
 {
 	public:
-		Form(std::string name, int grade);
-		Form(std::string name);
-		Form( Form const & src );
-		virtual ~Form();
-
-		Form &				operator=( Form const & rhs );
-
-		void				beSigned(Bureaucrat *signer);
-		void				signForm(Bureaucrat *signer);
-
-		const std::string	getName(void) const;
-		int					getSignGrade(void) const;
-		int					getExecuteGrade(void) const;
-		bool				isSigned(void) const;
-
 		class GradeTooHightException : public std::exception {
 			public:
 				virtual const char* what() const throw();
@@ -47,6 +32,24 @@ class Form
 			public:
 				virtual const char* what() const throw();
 		};
+
+		Form(std::string name, int sign_grade, int execute_grade);
+		Form(Form const &src);
+		virtual ~Form();
+
+		Form &				operator=( Form const & rhs );
+
+		void				beSigned(Bureaucrat *signer)
+			throw(Form::GradeTooHightException, Form::GradeTooLowException, Form::StillSignedException);
+		void				signForm(Bureaucrat *signer);
+
+		const std::string	getName(void) const;
+		int					getSignGrade(void) const;
+		int					getExecuteGrade(void) const;
+		bool				isSigned(void) const;
+
+		static int			inRangeValue(int value)
+			throw(Form::GradeTooHightException, Form::GradeTooLowException);
 
 	private:
 		const std::string	_name;

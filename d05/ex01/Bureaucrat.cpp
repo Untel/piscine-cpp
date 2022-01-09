@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:09:28 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/08 19:23:48 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/09 19:12:46 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,20 @@ Bureaucrat::Bureaucrat(std::string name, int grade) :
 
 Bureaucrat::Bureaucrat(std::string name) :
 	_name(name),
-	_grade(Bureaucrat::_min_grade),
+	_grade(Bureaucrat::min_grade)
 {
 	#ifdef DEBUG
 		std::cout << "<Bureaucrat> No grade constructor" << std::endl;
 	#endif // DEBUG
 }
 
-Bureaucrat::Bureaucrat( const Bureaucrat & src ) :
-	_name(src._name)
+Bureaucrat::Bureaucrat( const Bureaucrat & src )
 {
-	this->_setGrade(src._grade);
+	// this->_setGrade(src._grade);
 	#ifdef DEBUG
 		std::cout << "<Bureaucrat> Copy Constructor" << std::endl;
 	#endif // DEBUG
+	(*this) = src;
 }
 
 
@@ -70,13 +70,27 @@ Bureaucrat &
 		return (*this);
 	this->_setGrade(rhs._grade);
 	// this->_name = rhs._name // Subject is asking for a constant name, so no reassign here.
+	*(std::string *)&this->_name = rhs._name;
 	return (*this);
 }
+
+// Invert <> operators because biggest int is the lowest grade
+bool
+	Bureaucrat::operator > (int value) const
+{
+	return (this->getGrade() < value);
+}
+bool
+	Bureaucrat::operator < (int value) const
+{
+	return (this->getGrade() > value);
+}
+
 
 std::ostream &
 	operator<<( std::ostream & o, Bureaucrat const & i )
 {
-	o << i.getName() << ", bureaucrat grade " << i.getGrade();
+	o << "<Bureaucrat '" << i.getName() << "' Grade(" << i.getGrade() << ")>";
 	return o;
 }
 
@@ -123,9 +137,9 @@ void
 	#ifdef DEBUG
 		std::cout << "<Bureaucrat> Grade set to " << value << std::endl;
 	#endif // DEBUG
-	if (value > Bureaucrat::_min_grade)
+	if (value > Bureaucrat::min_grade)
 		throw Bureaucrat::GradeTooLowException();
-	else if (value < Bureaucrat::_max_grade)
+	else if (value < Bureaucrat::max_grade)
 		throw Bureaucrat::GradeTooLowException();
 	this->_grade = value;
 }
