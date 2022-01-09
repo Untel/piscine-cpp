@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:09:14 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/09 19:33:10 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/09 19:59:02 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ std::ostream &
 */
 
 void
-	Form::beSigned(Bureaucrat *signer) throw(Form::GradeTooHightException, Form::GradeTooLowException, Form::StillSignedException)
+	Form::beSigned(Bureaucrat *signer) throw(Form::GradeTooLowException, Form::StillSignedException)
 {
 	#ifdef DEBUG
 		std::cout << "<Form> BeSigned" << std::endl;
@@ -105,6 +105,20 @@ void
 		throw Form::GradeTooLowException();
 	}
 	this->_is_signed = true;
+}
+
+void
+	Form::beExecuted(Bureaucrat *signer) throw(Form::GradeTooLowException, Form::IsUnsignedException)
+{
+	#ifdef DEBUG
+		std::cout << "<Form> BeExecuted" << std::endl;
+	#endif // DEBUG
+	if (!this->isSigned()) {
+		throw Form::IsUnsignedException();
+	}
+	if (*signer < this->_execute_grade) {
+		throw Form::GradeTooLowException();
+	}
 }
 
 void
@@ -191,5 +205,10 @@ const char *
 	return ("Still signed");
 }
 
+const char *
+	Form::IsUnsignedException::what() const throw()
+{
+	return ("Is unsigned");
+}
 
 /* ************************************************************************** */
