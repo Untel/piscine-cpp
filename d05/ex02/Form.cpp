@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:09:14 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/09 19:59:02 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/09 23:32:57 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ Form::Form(const Form &src) :
 	#ifdef DEBUG
 		std::cout << "<Form> Copy Constructor" << std::endl;
 	#endif // DEBUG
-	(*this) = src;
+	// (*this) = src;
 }
 
 
@@ -108,10 +108,10 @@ void
 }
 
 void
-	Form::beExecuted(Bureaucrat *signer) throw(Form::GradeTooLowException, Form::IsUnsignedException)
+	Form::execute(Bureaucrat *signer) throw(Form::GradeTooLowException, Form::IsUnsignedException)
 {
 	#ifdef DEBUG
-		std::cout << "<Form> BeExecuted" << std::endl;
+		std::cout << "<Form> Execute" << std::endl;
 	#endif // DEBUG
 	if (!this->isSigned()) {
 		throw Form::IsUnsignedException();

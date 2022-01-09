@@ -4,11 +4,13 @@ SRCS_FILES			= 	\
 						main.cpp \
 						Bureaucrat.cpp \
 						Form.cpp \
+						ShrubberyCreationForm.cpp \
 
 
 HEAD_FILES			= \
 						Bureaucrat.hpp \
 						Form.hpp \
+						ShrubberyCreationForm.hpp \
 
 SRCS				= $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 INCLUDES			= -I .
