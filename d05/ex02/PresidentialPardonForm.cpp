@@ -15,7 +15,8 @@ PresidentialPardonForm::PresidentialPardonForm(std::string target) :
 }
 
 PresidentialPardonForm::PresidentialPardonForm( const PresidentialPardonForm & src ) :
-	Form(src)
+	Form(src),
+	_target(src._target)
 {
 	#ifdef DEBUG
 		std::cout << "<PresidentialPardonForm> Copy Constructor" << std::endl;
@@ -47,16 +48,19 @@ PresidentialPardonForm &				PresidentialPardonForm::operator=( PresidentialPardo
 	if (this == &rhs)
 		return (*this);
 	Form::operator=(rhs);
-	return (*this);
+	this->_target = rhs._target;	return (*this);
 }
 
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
 void
-	PresidentialPardonForm::execute(Bureaucrat *signer) throw(Form::GradeTooLowException, Form::IsUnsignedException)
+	PresidentialPardonForm::execute(Bureaucrat const &executor) const throw(Form::GradeTooLowException, Form::IsUnsignedException)
 {
-	Form::execute(signer);
+	#ifdef DEBUG
+		std::cout << "<PresidentialPardonForm> Execute form" << std::endl;
+	#endif // DEBUG
+	Form::execute(executor);
 	std::cout << this->_target << " has been pardoned by Zafod Beeblebrox" << std::endl;
 }
 

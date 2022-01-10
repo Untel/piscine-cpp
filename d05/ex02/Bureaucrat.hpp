@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:09:23 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/10 16:06:50 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/10 16:24:52 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <iostream>
 # include <string>
 # include "Form.hpp"
+
+class Form;
+class Bureaucrat;
 
 class Bureaucrat
 {
@@ -33,7 +36,7 @@ class Bureaucrat
 		int					getGrade(void) const;
 		void				incrementGrade(void);
 		void				decrementGrade(void);
-		void				executeForm(Form const &form);
+		void				executeForm(Form const &form) const;
 
 		class GradeTooHightException : public std::exception {
 			public: // We could set the class as struct instead of this
@@ -53,6 +56,6 @@ class Bureaucrat
 		void				_setGrade(int value);
 };
 
-std::ostream &			operator<<( std::ostream & o, Bureaucrat const & i );
+std::ostream &			operator << (std::ostream &o, Bureaucrat const &i);
 
 #endif /* ****************************************************** BUREAUCRAT_H */

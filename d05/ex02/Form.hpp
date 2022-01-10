@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:09:07 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/10 16:05:40 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/10 16:28:27 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 
 # include <iostream>
 # include <string>
-// # include "Bureaucrat.hpp"
+# include "Bureaucrat.hpp"
 
+class Form;
 class Bureaucrat;
 
 class Form
@@ -46,7 +47,7 @@ class Form
 		Form &				operator=( Form const & rhs );
 
 		void				beSigned(Bureaucrat *signer) throw(Form::GradeTooLowException, Form::StillSignedException);
-		virtual void		execute(Bureaucrat *signer) throw(Form::GradeTooLowException, Form::IsUnsignedException) = 0;
+		virtual void		execute(Bureaucrat const &executor) const throw(Form::GradeTooLowException, Form::IsUnsignedException) = 0;
 		void				signForm(Bureaucrat *signer);
 
 		const std::string	getName(void) const;

@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:09:28 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/10 16:08:28 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/10 16:30:02 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,9 +117,14 @@ void
 }
 
 void
-	Bureaucrat::executeForm(Form const &form)
+	Bureaucrat::executeForm(Form const &form) const
 {
-	form.execute(*this);
+	try {
+		form.execute(*this);
+		std::cout << *this << " executes " << form << std::endl;
+	} catch (std::exception &ex) {
+
+	}
 }
 
 /*

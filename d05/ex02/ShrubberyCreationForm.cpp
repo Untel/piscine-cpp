@@ -15,7 +15,8 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) :
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm & src ) :
-	Form(src)
+	Form(src),
+	_target(src._target)
 {
 	#ifdef DEBUG
 		std::cout << "<ShrubberyCreationForm> Copy Constructor" << std::endl;
@@ -47,16 +48,19 @@ ShrubberyCreationForm &				ShrubberyCreationForm::operator=( ShrubberyCreationFo
 	if (this == &rhs)
 		return (*this);
 	Form::operator=(rhs);
-	return (*this);
+	this->_target = rhs._target;	return (*this);
 }
 
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
 void
-	ShrubberyCreationForm::execute(Bureaucrat *signer) throw(Form::GradeTooLowException, Form::IsUnsignedException)
+	ShrubberyCreationForm::execute(Bureaucrat const &executor) const throw(Form::GradeTooLowException, Form::IsUnsignedException)
 {
-	Form::execute(signer);
+	#ifdef DEBUG
+		std::cout << "<PresidentialPardonForm> Execute form" << std::endl;
+	#endif // DEBUG
+	Form::execute(executor);
 	std::ofstream f;
 	f.open(std::string(this->_target + "_shrubbery").c_str());
 	if (f.is_open()) {

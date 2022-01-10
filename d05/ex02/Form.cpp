@@ -6,11 +6,12 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:09:14 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/09 23:32:57 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/10 16:28:27 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
@@ -108,7 +109,7 @@ void
 }
 
 void
-	Form::execute(Bureaucrat *signer) throw(Form::GradeTooLowException, Form::IsUnsignedException)
+	Form::execute(Bureaucrat const &executor) const throw(Form::GradeTooLowException, Form::IsUnsignedException)
 {
 	#ifdef DEBUG
 		std::cout << "<Form> Execute" << std::endl;
@@ -116,7 +117,7 @@ void
 	if (!this->isSigned()) {
 		throw Form::IsUnsignedException();
 	}
-	if (*signer < this->_execute_grade) {
+	if (executor < this->_execute_grade) {
 		throw Form::GradeTooLowException();
 	}
 }

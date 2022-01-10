@@ -14,7 +14,7 @@ class PresidentialPardonForm : public Form
 		~PresidentialPardonForm();
 
 		PresidentialPardonForm &		operator=( PresidentialPardonForm const & rhs );
-		virtual void					execute(Bureaucrat *signer) throw(Form::GradeTooLowException, Form::IsUnsignedException);
+		virtual void					execute(Bureaucrat const &executor) const throw(Form::GradeTooLowException, Form::IsUnsignedException);
 
 	private:
 		std::string _target;

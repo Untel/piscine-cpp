@@ -14,7 +14,7 @@ class ShrubberyCreationForm : public Form
 		~ShrubberyCreationForm();
 
 		ShrubberyCreationForm &		operator=( ShrubberyCreationForm const & rhs );
-		virtual void				execute(Bureaucrat *signer) throw(Form::GradeTooLowException, Form::IsUnsignedException);
+		virtual void				execute(Bureaucrat const &executor) const throw(Form::GradeTooLowException, Form::IsUnsignedException);
 
 	private:
 		std::string _target;

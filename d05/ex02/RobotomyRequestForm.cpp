@@ -1,5 +1,4 @@
 #include "RobotomyRequestForm.hpp"
-#include <stdlib.h>
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
@@ -9,14 +8,17 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target) :
 	Form("RobotomyRequestForm", 145, 137),
 	_target(target)
 {
+	srand(time(NULL));
 	#ifdef DEBUG
 		std::cout << "<RobotomyRequestForm> Constructor" << std::endl;
 	#endif // DEBUG
 }
 
 RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm & src ) :
-	Form(src)
+	Form(src),
+	_target(src._target)
 {
+	srand(time(NULL));
 	#ifdef DEBUG
 		std::cout << "<RobotomyRequestForm> Copy Constructor" << std::endl;
 	#endif // DEBUG
@@ -47,6 +49,7 @@ RobotomyRequestForm &				RobotomyRequestForm::operator=( RobotomyRequestForm con
 	if (this == &rhs)
 		return (*this);
 	Form::operator=(rhs);
+	this->_target = rhs._target;
 	return (*this);
 }
 
@@ -54,16 +57,20 @@ RobotomyRequestForm &				RobotomyRequestForm::operator=( RobotomyRequestForm con
 ** --------------------------------- METHODS ----------------------------------
 */
 void
-	RobotomyRequestForm::execute(Bureaucrat *signer) throw(Form::GradeTooLowException, Form::IsUnsignedException)
+	RobotomyRequestForm::execute(Bureaucrat const &executor) const throw(Form::GradeTooLowException, Form::IsUnsignedException)
 {
-	Form::execute(signer);
-	if (((rand() % 2 > + 1) >= 1)) {
+	int randed = rand() % 2;
+	#ifdef DEBUG
+		std::cout << rand() << "<PresidentialPardonForm> Execute form randed" << randed << std::endl;
+	#endif // DEBUG
+	Form::execute(executor);
+
+	if (randed) {
 		std::cout << this->_target << " has been robotomized !" << std::endl;
 	} else {
 		std::cout << "It's a failure!" << std::endl;
 	}
 }
-
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
