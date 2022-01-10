@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:09:28 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/09 18:57:35 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/10 19:06:51 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int
 }
 
 void
-	Bureaucrat::_setGrade(int value)
+	Bureaucrat::_setGrade(int value) throw(Bureaucrat::GradeTooHightException, Bureaucrat::GradeTooLowException)
 {
 	#ifdef DEBUG
 		std::cout << "<Bureaucrat> Grade set to " << value << std::endl;

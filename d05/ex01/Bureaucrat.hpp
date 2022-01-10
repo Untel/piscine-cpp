@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:09:23 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/09 19:14:47 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/10 19:07:35 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ class Bureaucrat
 	private:
 		const std::string	_name;
 		int					_grade;
-		void				_setGrade(int value);
+		void				_setGrade(int value) throw(Bureaucrat::GradeTooHightException, Bureaucrat::GradeTooLowException);
 };
 
 std::ostream &			operator<<( std::ostream & o, Bureaucrat const & i );

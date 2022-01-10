@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 17:15:18 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/10 18:46:50 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/10 19:03:28 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,26 @@ void testGenericExceptions() {
     delete b;
 }
 
+void testIncrement() {
+    Bureaucrat *b = NULL;
+    try {
+        b = new Bureaucrat("Jean", 150);
+        std::cout << "Incrementing " << *b << std::endl;
+        b->incrementGrade();
+        std::cout << "became: " << *b << std::endl;
+    } catch (std::exception &ex) {
+        std::cout << "Generic exception value: " << ex.what() << std::endl;
+    }
+    delete b;
+}
+
+
 
 int main(void)
 {
     // testCanonicalBureaucrats();
     testExceptions();
     testGenericExceptions();
+    testIncrement();
     return (0);
 }
