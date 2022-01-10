@@ -1,0 +1,7 @@
+**/*.o
+**/*.d
+ex00/bureaucrat
+ex01/forms
+ex02/concrete
+ex03/intern
+**/*.subject.pdf

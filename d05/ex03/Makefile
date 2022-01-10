@@ -25,7 +25,7 @@ CXX					= c++
 OPTS				=
 CXXFLAGS			= -std=c++98 -Wall -Wextra -Werror ${OPTS} $(INCLUDES) -MMD
 OBJS				= $(SRCS:.cpp=.o)
-NAME				= forms
+NAME				= intern
 ARGS				= 
 OBJ_DIR				= objs
 DEP 				= $(OBJS:.o=.d)
