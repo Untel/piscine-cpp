@@ -10,7 +10,7 @@ class ShrubberyCreationForm : public Form
 
 	public:
 		ShrubberyCreationForm(std::string target);
-		ShrubberyCreationForm( ShrubberyCreationForm const & src );
+		ShrubberyCreationForm(ShrubberyCreationForm const &src);
 		~ShrubberyCreationForm();
 
 		ShrubberyCreationForm &		operator=( ShrubberyCreationForm const & rhs );

@@ -5,19 +5,23 @@ SRCS_FILES			= 	\
 						Bureaucrat.cpp \
 						Form.cpp \
 						ShrubberyCreationForm.cpp \
+						RobotomyRequestForm.cpp \
+						PresidentialPardonForm.cpp \
 
 
 HEAD_FILES			= \
 						Bureaucrat.hpp \
 						Form.hpp \
 						ShrubberyCreationForm.hpp \
+						RobotomyRequestForm.hpp \
+						PresidentialPardonForm.hpp \
 
 SRCS				= $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 INCLUDES			= -I .
 LIBS				= 
 CXX					= c++
 OPTS				=
-CXXFLAGS			= -std=c++98 -Wall -Wextra -Werror -Wshadow -Wno-shadow ${OPTS} $(INCLUDES) -MMD
+CXXFLAGS			= -std=c++98 -Wall -Wextra -Werror ${OPTS} $(INCLUDES) -MMD
 OBJS				= $(SRCS:.cpp=.o)
 NAME				= forms
 ARGS				= 

@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:09:28 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/09 19:18:31 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/10 16:08:28 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,12 @@ void
 		std::cout << "<Bureaucrat> Decrement" << std::endl;
 	#endif // DEBUG
 	this->_setGrade(this->_grade + 1);
+}
+
+void
+	Bureaucrat::executeForm(Form const &form)
+{
+	form.execute(*this);
 }
 
 /*
