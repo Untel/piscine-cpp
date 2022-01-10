@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:09:28 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/10 19:06:42 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/10 19:44:43 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,27 @@ void
 	#endif // DEBUG
 	this->_setGrade(this->_grade + 1);
 }
+
+void
+	Bureaucrat::signForm(Form *form) const
+{
+	#ifdef DEBUG
+		std::cout << "<Form> Signing form" << std::endl;
+	#endif // DEBUG
+	try {
+		form->beSigned(*this);
+		std::cout << *this << " signs " << *form << std::endl;
+	} catch (Form::StillSignedException &ex) {
+		std::cout << *this << " cannot sign " << *form << " because the form is still signed" << std::endl;
+	} catch (Form::GradeTooLowException &ex) {
+		std::cout << *this << " cannot sign " << *form << " because his grade is too low" << std::endl;
+	} catch (Form::GradeTooHightException &ex) {
+		std::cout << *this << " cannot sign " << *form << " because his grade is too hight" << std::endl;
+	} catch (std::exception &ex) {
+		std::cout << *this << " cannot sign " << *form << " because " << ex.what() << std::endl;
+	}
+}
+
 
 void
 	Bureaucrat::executeForm(Form const &form) const

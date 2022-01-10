@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:09:14 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/10 16:28:27 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/10 19:55:19 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ std::ostream &
 */
 
 void
-	Form::beSigned(Bureaucrat *signer) throw(Form::GradeTooLowException, Form::StillSignedException)
+	Form::beSigned(Bureaucrat const &signer) throw(Form::GradeTooLowException, Form::StillSignedException)
 {
 	#ifdef DEBUG
 		std::cout << "<Form> BeSigned" << std::endl;
@@ -102,7 +102,7 @@ void
 	if (this->isSigned()) {
 		throw Form::StillSignedException();
 	}
-	if (*signer < this->_sign_grade) {
+	if (signer < this->_sign_grade) {
 		throw Form::GradeTooLowException();
 	}
 	this->_is_signed = true;
@@ -122,26 +122,6 @@ void
 	}
 }
 
-void
-	Form::signForm(Bureaucrat *signer) 
-{
-	#ifdef DEBUG
-		std::cout << "<Form> Signing form" << std::endl;
-	#endif // DEBUG
-	try {
-		this->beSigned(signer);
-		std::cout << *signer << " signs " << *this << std::endl;
-	} catch (Form::StillSignedException &ex) {
-		std::cout << " ERR MESSAGE: " << ex.what() << std::endl;
-		std::cout << *signer << " cannot sign " << *this << " because the form is still signed" << std::endl;
-	} catch (Form::GradeTooLowException &ex) {
-		std::cout << *signer << " cannot sign " << *this << " because his grade is too low" << std::endl;
-	} catch (Form::GradeTooHightException &ex) {
-		std::cout << *signer << " cannot sign " << *this << " because his grade is too hight" << std::endl;
-	} catch (std::exception &ex) {
-		std::cout << *signer << " cannot sign " << *this << " because " << ex.what() << std::endl;
-	}
-}
 
 int
 	Form::inRangeValue(int value) throw(Form::GradeTooHightException, Form::GradeTooLowException)

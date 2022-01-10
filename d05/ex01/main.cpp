@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 17:15:18 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/10 18:48:01 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/10 19:53:31 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void testCanonicalBureaucrats() {
     Bureaucrat *c = new Bureaucrat(*b);
     std::cout << *c << std::endl;
     Bureaucrat *d = new Bureaucrat("Pierre", 12);
+    std::cout << *d << std::endl;
     *d = *c;
     std::cout << *d << std::endl;
     delete b;
@@ -76,7 +77,7 @@ void testExceptionsForms() {
 void testFormsSigning() {
     Form *f = new Form("B150", 41, 1);
     Bureaucrat *b = new Bureaucrat("Jean", 42);
-    f->signForm(b);
+    b->signForm(f);
     delete f;
     delete b;
 }

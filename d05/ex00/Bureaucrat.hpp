@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:09:33 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/10 19:07:45 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/10 19:56:41 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include <iostream>
 # include <string>
+
+class Form;
+class Bureaucrat;
 
 class Bureaucrat
 {

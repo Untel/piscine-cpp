@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:09:07 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/10 18:28:59 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/10 19:55:49 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ class Form
 
 		Form &				operator=( Form const & rhs );
 
-		void				beSigned(Bureaucrat *signer) throw(Form::GradeTooLowException, Form::StillSignedException);
+		void				beSigned(Bureaucrat const &signer) throw(Form::GradeTooLowException, Form::StillSignedException);
 		virtual void		execute(Bureaucrat const &executor) const throw(Form::GradeTooLowException, Form::IsUnsignedException) = 0;
-		void				signForm(Bureaucrat *signer);
+
 
 		const std::string	getName(void) const;
 		int					getSignGrade(void) const;

@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:09:07 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/09 19:32:39 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/10 19:55:49 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <iostream>
 # include <string>
 # include "Bureaucrat.hpp"
+
+class Form;
+class Bureaucrat;
 
 class Form
 {
@@ -39,17 +42,15 @@ class Form
 
 		Form &				operator=( Form const & rhs );
 
-		void				beSigned(Bureaucrat *signer)
-			throw(Form::GradeTooHightException, Form::GradeTooLowException, Form::StillSignedException);
-		void				signForm(Bureaucrat *signer);
+		void				beSigned(Bureaucrat const &signer) throw(Form::GradeTooLowException, Form::StillSignedException);
+
 
 		const std::string	getName(void) const;
 		int					getSignGrade(void) const;
 		int					getExecuteGrade(void) const;
 		bool				isSigned(void) const;
 
-		static int			inRangeValue(int value)
-			throw(Form::GradeTooHightException, Form::GradeTooLowException);
+		static int			inRangeValue(int value) throw(Form::GradeTooHightException, Form::GradeTooLowException);
 
 	private:
 		const std::string	_name;
