@@ -61,7 +61,7 @@ void
 {
 	int randed = rand() % 2;
 	#ifdef DEBUG
-		std::cout << rand() << "<PresidentialPardonForm> Execute form randed" << randed << std::endl;
+		std::cout << "<PresidentialPardonForm> Execute form randed " << randed << std::endl;
 	#endif // DEBUG
 	Form::execute(executor);
 

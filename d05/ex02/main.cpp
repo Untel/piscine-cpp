@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 17:15:18 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/10 17:16:05 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/10 17:44:20 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void executeShrubbery(int makeFail) {
 
     try {
         f->signForm(b1);
-        f->execute(*b1);
+        b1->executeForm(*f);
     } catch (std::exception &ex) {
         std::cout << "Fail with " << ex.what() << std::endl;
     }
@@ -37,7 +37,7 @@ void executePresidentialPardon(int makeFail) {
 
     try {
         f->signForm(b1);
-        f->execute(*b1);
+        b1->executeForm(*f);
     } catch (std::exception &ex) {
         std::cout << "Fail with " << ex.what() << std::endl;
     }
@@ -51,7 +51,7 @@ void executeRobotomyRequestForm(int makeFail) {
 
     try {
         f->signForm(b1);
-        f->execute(*b1);
+        b1->executeForm(*f);
     } catch (std::exception &ex) {
         std::cout << "Fail with " << ex.what() << std::endl;
     }
