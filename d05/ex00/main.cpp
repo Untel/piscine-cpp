@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 17:15:18 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/09 17:53:41 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/10 18:42:32 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ void testGenericExceptions() {
 
 int main(void)
 {
-    testCanonicalBureaucrats();
-    // testExceptions();
-    // testGenericExceptions();
+    // testCanonicalBureaucrats();
+    testExceptions();
+    testGenericExceptions();
     return (0);
 }

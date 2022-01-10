@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 17:15:18 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/10 18:31:53 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/10 18:42:42 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,14 @@ int main(int ac, char **av)
     Form *f;
 
     f = i->makeForm("shrubbery creation", "George");
-    std::cout << "Generated form" << *f << std::endl;
+    std::cout << "Generated form " << *f << std::endl;
     delete f;
     f = i->makeForm("robotmy request", "George");
-    std::cout << "Generated form" << *f << std::endl;
+    std::cout << "Generated form " << *f << std::endl;
     delete f;
     f = i->makeForm("presidential pardon", "George");
-    std::cout << "Generated form" << *f << std::endl;
+    std::cout << "Generated form " << *f << std::endl;
     delete f;
-    // executeShrubbery(makeFail);
-    // executePresidentialPardon(makeFail);
-    // executeRobotomyRequestForm(makeFail);
+    delete i;
     return (0);
 }

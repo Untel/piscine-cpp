@@ -48,7 +48,8 @@ PresidentialPardonForm &				PresidentialPardonForm::operator=( PresidentialPardo
 	if (this == &rhs)
 		return (*this);
 	Form::operator=(rhs);
-	this->_target = rhs._target;	return (*this);
+	this->_target = rhs._target;
+	return (*this);
 }
 
 /*
