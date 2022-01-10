@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 17:15:18 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/10 18:42:32 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/10 18:46:50 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ void testCanonicalBureaucrats() {
 
 void testExceptions() {
     try {
-        Bureaucrat *b = new Bureaucrat("Jean", 151);
-        (void) b;
+        new Bureaucrat("Jean", 151);
     } catch (Bureaucrat::GradeTooHightException &ex) {
         std::cout << "GradeTooHightException value: " << ex.what() << std::endl;
     } catch (Bureaucrat::GradeTooLowException &ex) {
@@ -39,12 +38,14 @@ void testExceptions() {
 }
 
 void testGenericExceptions() {
+    Bureaucrat *b = NULL;
     try {
-        Bureaucrat *b = new Bureaucrat("Jean", 150);
+        b = new Bureaucrat("Jean", 150);
         b->decrementGrade();
     } catch (std::exception &ex) {
         std::cout << "Generic exception value: " << ex.what() << std::endl;
     }
+    delete b;
 }
 
 

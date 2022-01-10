@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 17:15:18 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/09 19:08:18 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/10 18:48:01 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,7 @@ void testCanonicalForms() {
 
 void testExceptionsForms() {
     try {
-        Form *b = new Form("C151", 151, 170);
-        (void) b;
+        new Form("C151", 151, 170);
     } catch (Form::GradeTooHightException &ex) {
         std::cout << "Form::GradeTooHightException value: " << ex.what() << std::endl;
     } catch (Form::GradeTooLowException &ex) {
@@ -78,6 +77,8 @@ void testFormsSigning() {
     Form *f = new Form("B150", 41, 1);
     Bureaucrat *b = new Bureaucrat("Jean", 42);
     f->signForm(b);
+    delete f;
+    delete b;
 }
 
 void testBureaucratDirection() {
