@@ -70,7 +70,7 @@ Form *
 		{ .key = "robotomy request", .factory = RobotomyRequestForm::create },
 		{ .key = "presidential pardon", .factory = PresidentialPardonForm::create }
 	};
-	for (int i = 0; i < 3; i++) {
+	for (int i = 0; i < FACTORY_COUNT; i++) {
 		if (factories[i].key == key) {
 			Form *form = factories[i].factory(target);
 			std::cout << "Intern creates " << *form << std::endl;
@@ -84,6 +84,5 @@ Form *
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
-
 
 /* ************************************************************************** */
