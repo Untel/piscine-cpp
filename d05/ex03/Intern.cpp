@@ -67,7 +67,7 @@ Form *
 
 	static t_keyform factories[FACTORY_COUNT] = {
 		{ .key = "shrubbery creation", .factory = ShrubberyCreationForm::create },
-		{ .key = "robotmy request", .factory = RobotomyRequestForm::create },
+		{ .key = "robotomy request", .factory = RobotomyRequestForm::create },
 		{ .key = "presidential pardon", .factory = PresidentialPardonForm::create }
 	};
 	for (int i = 0; i < 3; i++) {
