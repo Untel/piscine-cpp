@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 17:15:18 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/10 19:03:28 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/11 17:19:44 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void testCanonicalBureaucrats() {
 
 void testExceptions() {
     try {
-        new Bureaucrat("Jean", 151);
-    } catch (Bureaucrat::GradeTooHightException &ex) {
-        std::cout << "GradeTooHightException value: " << ex.what() << std::endl;
+        new Bureaucrat("Jean", 0);
+    } catch (Bureaucrat::GradeTooHighException &ex) {
+        std::cout << "GradeTooHighException value: " << ex.what() << std::endl;
     } catch (Bureaucrat::GradeTooLowException &ex) {
         std::cout << "GradeTooLowException value: " << ex.what() << std::endl;
     } catch (std::exception &ex) {

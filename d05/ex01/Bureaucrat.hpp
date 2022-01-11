@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:09:23 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/10 19:44:04 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/11 17:16:48 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ class Bureaucrat
 		void				decrementGrade(void);
 		void				signForm(Form *form) const;
 
-		class GradeTooHightException : public std::exception {
+		class GradeTooHighException : public std::exception {
 			public: // We could set the class as struct instead of this
 				virtual const char* what() const throw();
 		};
@@ -53,7 +53,7 @@ class Bureaucrat
 	private:
 		const std::string	_name;
 		int					_grade;
-		void				_setGrade(int value) throw(Bureaucrat::GradeTooHightException, Bureaucrat::GradeTooLowException);
+		void				_setGrade(int value) throw(Bureaucrat::GradeTooHighException, Bureaucrat::GradeTooLowException);
 };
 
 std::ostream &			operator<<( std::ostream & o, Bureaucrat const & i );

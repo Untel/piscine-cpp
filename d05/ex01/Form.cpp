@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:09:14 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/10 19:55:19 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/11 17:20:22 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void
 }
 
 int
-	Form::inRangeValue(int value) throw(Form::GradeTooHightException, Form::GradeTooLowException)
+	Form::inRangeValue(int value) throw(Form::GradeTooHighException, Form::GradeTooLowException)
 {
 	#ifdef DEBUG
 		std::cout << "<Form> Test in range value" << std::endl;
@@ -116,7 +116,7 @@ int
 	if (value > Bureaucrat::min_grade)
 		throw Form::GradeTooLowException();
 	else if (value < Bureaucrat::max_grade)
-		throw Form::GradeTooLowException();
+		throw Form::GradeTooHighException();
 	return value;
 }
 
@@ -153,9 +153,9 @@ bool
 */
 
 const char *
-	Form::GradeTooHightException::what() const throw()
+	Form::GradeTooHighException::what() const throw()
 {
-	return ("Grade is too hight");
+	return ("Grade is too high");
 }
 
 const char *

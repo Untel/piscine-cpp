@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:09:28 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/10 19:56:47 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/11 17:20:21 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int
 }
 
 void
-	Bureaucrat::_setGrade(int value) throw(Bureaucrat::GradeTooHightException, Bureaucrat::GradeTooLowException)
+	Bureaucrat::_setGrade(int value) throw(Bureaucrat::GradeTooHighException, Bureaucrat::GradeTooLowException)
 {
 	#ifdef DEBUG
 		std::cout << "<Bureaucrat> Grade set to " << value << std::endl;
@@ -126,7 +126,7 @@ void
 	if (value > Bureaucrat::min_grade)
 		throw Bureaucrat::GradeTooLowException();
 	else if (value < Bureaucrat::max_grade)
-		throw Bureaucrat::GradeTooLowException();
+		throw Bureaucrat::GradeTooHighException();
 	this->_grade = value;
 }
 
@@ -135,9 +135,9 @@ void
 */
 
 const char *
-	Bureaucrat::GradeTooHightException::what() const throw()
+	Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("Grade is too hight");
+	return ("Grade is too high");
 }
 
 const char *

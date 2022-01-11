@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:09:07 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/10 19:55:49 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/11 17:16:48 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Bureaucrat;
 class Form
 {
 	public:
-		class GradeTooHightException : public std::exception {
+		class GradeTooHighException : public std::exception {
 			public:
 				virtual const char* what() const throw();
 		};
@@ -49,13 +49,12 @@ class Form
 		void				beSigned(Bureaucrat const &signer) throw(Form::GradeTooLowException, Form::StillSignedException);
 		virtual void		execute(Bureaucrat const &executor) const throw(Form::GradeTooLowException, Form::IsUnsignedException) = 0;
 
-
 		const std::string	getName(void) const;
 		int					getSignGrade(void) const;
 		int					getExecuteGrade(void) const;
 		bool				isSigned(void) const;
 
-		static int			inRangeValue(int value) throw(Form::GradeTooHightException, Form::GradeTooLowException);
+		static int			inRangeValue(int value) throw(Form::GradeTooHighException, Form::GradeTooLowException);
 
 	private:
 		const std::string	_name;

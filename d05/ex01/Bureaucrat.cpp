@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:09:28 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/10 19:44:51 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/11 17:20:22 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,8 +129,8 @@ void
 		std::cout << *this << " cannot sign " << *form << " because the form is still signed" << std::endl;
 	} catch (Form::GradeTooLowException &ex) {
 		std::cout << *this << " cannot sign " << *form << " because his grade is too low" << std::endl;
-	} catch (Form::GradeTooHightException &ex) {
-		std::cout << *this << " cannot sign " << *form << " because his grade is too hight" << std::endl;
+	} catch (Form::GradeTooHighException &ex) {
+		std::cout << *this << " cannot sign " << *form << " because his grade is too high" << std::endl;
 	} catch (std::exception &ex) {
 		std::cout << *this << " cannot sign " << *form << " because " << ex.what() << std::endl;
 	}
@@ -152,7 +152,7 @@ int
 }
 
 void
-	Bureaucrat::_setGrade(int value) throw(Bureaucrat::GradeTooHightException, Bureaucrat::GradeTooLowException)
+	Bureaucrat::_setGrade(int value) throw(Bureaucrat::GradeTooHighException, Bureaucrat::GradeTooLowException)
 {
 	#ifdef DEBUG
 		std::cout << "<Bureaucrat> Grade set to " << value << std::endl;
@@ -160,7 +160,7 @@ void
 	if (value > Bureaucrat::min_grade)
 		throw Bureaucrat::GradeTooLowException();
 	else if (value < Bureaucrat::max_grade)
-		throw Bureaucrat::GradeTooLowException();
+		throw Bureaucrat::GradeTooHighException();
 	this->_grade = value;
 }
 
@@ -169,9 +169,9 @@ void
 */
 
 const char *
-	Bureaucrat::GradeTooHightException::what() const throw()
+	Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("Grade is too hight");
+	return ("Grade is too high");
 }
 
 const char *

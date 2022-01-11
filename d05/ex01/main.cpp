@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 17:15:18 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/10 19:53:31 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/11 17:16:48 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void testExceptions() {
     try {
         Bureaucrat *b = new Bureaucrat("Jean", 151);
         (void) b;
-    } catch (Bureaucrat::GradeTooHightException &ex) {
-        std::cout << "GradeTooHightException value: " << ex.what() << std::endl;
+    } catch (Bureaucrat::GradeTooHighException &ex) {
+        std::cout << "GradeTooHighException value: " << ex.what() << std::endl;
     } catch (Bureaucrat::GradeTooLowException &ex) {
         std::cout << "GradeTooLowException value: " << ex.what() << std::endl;
     } catch (std::exception &ex) {
@@ -65,8 +65,8 @@ void testCanonicalForms() {
 void testExceptionsForms() {
     try {
         new Form("C151", 151, 170);
-    } catch (Form::GradeTooHightException &ex) {
-        std::cout << "Form::GradeTooHightException value: " << ex.what() << std::endl;
+    } catch (Form::GradeTooHighException &ex) {
+        std::cout << "Form::GradeTooHighException value: " << ex.what() << std::endl;
     } catch (Form::GradeTooLowException &ex) {
         std::cout << "Form::GradeTooLowException value: " << ex.what() << std::endl;
     } catch (std::exception &ex) {
