@@ -1,27 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   serialization.hpp                                  :+:      :+:    :+:   */
+/*   dynamic.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 20:37:26 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/12 22:46:57 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/12 23:13:12 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SERIALIZATION_HPP
-# define SERIALIZATION_HPP
+#ifndef DYNAMIC_HPP
+# define DYNAMIC_HPP
 # include <stdint.h>
 # include <iostream>
-    struct Data {
-        int value;
-    };
+# include <string>
+# include <cstdlib>
 
-    uintptr_t   serialize(Data* ptr);
+class Base {
+    public:
+        virtual ~Base() {};
+};
+class A : public Base {
+    public:
+        virtual ~A() {};
+};
+class B : public Base {
+    public:
+        virtual ~B() {};
+};
+class C : public Base {
+    public:
+        virtual ~C() {};
+};
 
-    Data*       deserialize(uintptr_t raw);
-#endif // !SERIALIZATION_HPP
+Base    * generate(void);
+void    identify(Base * p);
+void    identify(Base & p);
+
+#endif // !DYNAMIC_HPP
 
 
 
