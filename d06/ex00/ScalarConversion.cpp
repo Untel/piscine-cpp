@@ -11,9 +11,6 @@ ScalarConversion::ScalarConversion(std::string input) :
 	if (is_int(input)) {
 		long int parsed = atol(str);
 		if (parsed > INT_MAX || parsed < INT_MIN) {
-			#ifdef DEBUG
-				std::cout << "Reach max size " << parsed << " > " << INT_MAX << " < " << INT_MIN << std::endl;
-			#endif // DEBUG
 			throw std::string("Error: can't cast from overflowed INT");
 		}
 		this->_int = static_cast<int>(parsed);
@@ -32,7 +29,11 @@ ScalarConversion::ScalarConversion(std::string input) :
 		this->_float = static_cast<float>(_char);
 		this->_int = static_cast<int>(_char);
 	} else if (is_double(input)) {
-		this->_double = static_cast<float>(atof(str));
+		errno = 0;
+		this->_double = static_cast<double>(strtod(str, NULL));
+		if (errno == ERANGE) {
+			throw std::string("Error: can't cast from overflowed DOUBLE");
+		}
 		#ifdef DEBUG
 			std::cout << "DBG => Is double " << this->_double << std::endl;
 		#endif // DEBUG
@@ -40,7 +41,11 @@ ScalarConversion::ScalarConversion(std::string input) :
 		this->_float = static_cast<float>(_double);
 		this->_int = static_cast<int>(_double);
 	} else if (is_float(input)) {
-		this->_float = static_cast<float>(atof(str));
+		double parsed = atof(str);
+		if (parsed > FLT_MAX || parsed < FLT_MIN) {
+			throw std::string("Error: can't cast from overflowed FLOAT");
+		}
+		this->_float = static_cast<float>(parsed);
 		#ifdef DEBUG
 			std::cout << "DBG => Is float " << this->_float << std::endl;
 		#endif // DEBUG
@@ -74,7 +79,8 @@ ScalarConversion::~ScalarConversion()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-ScalarConversion &				ScalarConversion::operator=( ScalarConversion const & rhs )
+ScalarConversion &
+	ScalarConversion::operator=( ScalarConversion const & rhs )
 {
 	if ( this != &rhs )
 	{
@@ -87,7 +93,8 @@ ScalarConversion &				ScalarConversion::operator=( ScalarConversion const & rhs 
 	return *this;
 }
 
-std::ostream &			operator<<( std::ostream & o, ScalarConversion const & i )
+std::ostream &
+	operator<<( std::ostream & o, ScalarConversion const & i )
 {
 	o << "char: " << i.getChar() << std::endl
 		<< "int: " << i.getInt() << std::endl
@@ -104,8 +111,8 @@ std::ostream &			operator<<( std::ostream & o, ScalarConversion const & i )
 const std::string
 	ScalarConversion::getInt() const
 {
-	if (this->_float > INT_MAX
-		|| this->_float < INT_MIN
+	if ((int)this->_double > INT_MAX
+		|| (int)this->_double < INT_MIN
 		|| std::isnan(this->_float))
 		return "impossible";
 	std::ostringstream sstream;
@@ -127,6 +134,9 @@ const std::string
 	ScalarConversion::getFloat() const
 {
 	std::ostringstream sstream;
+	if ((float)this->_double < FLT_MIN
+		|| (float)this->_double > FLT_MAX)
+		return "impossible";
 	sstream << this->_float;
 	if (this->_float == this->_int)
 		sstream << ".0";
@@ -137,8 +147,8 @@ const std::string
 const std::string
 	ScalarConversion::getChar() const
 {
-	if (this->_float > CHAR_MAX
-		|| this->_float < CHAR_MIN
+	if ((char)this->_double > CHAR_MAX
+		|| (char)this->_double < CHAR_MIN
 		|| std::isnan(this->_float))
 		return "impossible";
 	if (!is_displayable(this->_char))
