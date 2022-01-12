@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   utils.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/11 18:08:19 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/12 04:15:03 by adda-sil         ###   ########.fr       */
+/*   Created: 2022/01/11 23:23:34 by adda-sil          #+#    #+#             */
+/*   Updated: 2022/01/11 23:25:15 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef UTILS_HPP
+# define UTILS_HPP
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
 #include <iostream>
-#include "ScalarConversion.hpp"
 
-int
-    main(int ac, char **av)
-{
-    if (ac != 2) {
-        std::cout << "Error: Usage: scalar <int|double|float|char>" << std::endl;
-        return (EXIT_FAILURE);
-    }
-    std::string literal(av[1]);
-    try {
-        ScalarConversion scal = ScalarConversion(literal);
-        std::cout << scal;
-    } catch (std::string ex) {
-        std::cout << ex << std::endl;
-    }
-    return (EXIT_SUCCESS);
-}
+bool    is_digit(char c);
+bool    is_sign(char c);
+bool    is_displayable(char c);
+bool    is_char(std::string str);
+bool    is_int(std::string str);
+bool    is_double(std::string str);
+bool    is_float(std::string str);
+
+#endif // !UTILS_HPP

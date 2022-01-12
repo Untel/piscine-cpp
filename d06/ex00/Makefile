@@ -2,8 +2,12 @@
 SRCS_DIR			= .
 SRCS_FILES			= 	\
 						main.cpp \
+						utils.cpp \
+						ScalarConversion.cpp \
 
 HEAD_FILES			= \
+						utils.hpp \
+						ScalarConversion.hpp \
 
 SRCS				= $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 INCLUDES			= -I .
