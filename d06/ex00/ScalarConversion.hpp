@@ -5,8 +5,7 @@
 # include <sstream>
 # include <string>
 # include <limits>
-# include <cmath>
-# include <iomanip>
+# include <bits/stdc++.h>
 # include "utils.hpp"
 
 class ScalarConversion

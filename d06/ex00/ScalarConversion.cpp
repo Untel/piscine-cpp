@@ -1,5 +1,5 @@
 # include "ScalarConversion.hpp"
-# include <bits/stdc++.h>
+
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
@@ -137,8 +137,8 @@ const std::string
 const std::string
 	ScalarConversion::getChar() const
 {
-	if (this->_float == std::numeric_limits<float>::infinity()
-		|| this->_float == -std::numeric_limits<float>::infinity()
+	if (this->_float > CHAR_MAX
+		|| this->_float < CHAR_MIN
 		|| std::isnan(this->_float))
 		return "impossible";
 	if (!is_displayable(this->_char))

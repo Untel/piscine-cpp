@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 18:08:19 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/12 04:15:03 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/12 04:24:52 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int
         std::cout << scal;
     } catch (std::string ex) {
         std::cout << ex << std::endl;
+        return (EXIT_FAILURE);
     }
     return (EXIT_SUCCESS);
 }
