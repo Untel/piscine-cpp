@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 22:46:37 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/13 16:20:21 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/13 16:23:23 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ Base    * generate(void) {
 }
 
 void    identify(Base * p) {
+    #ifdef DEBUG
+        std::cout << "Identify by pointer " << p << std::endl;
+    #endif // DEBUG
     if (dynamic_cast<A *>(p))
         std::cout << "A" << std::endl;
     else if (dynamic_cast<B *>(p))
@@ -44,6 +47,9 @@ void    identify(Base * p) {
 }
 
 void    identify(Base & p) {
+    #ifdef DEBUG
+        std::cout << "Identify by reference " << &p << std::endl;
+    #endif // DEBUG
     try {
         A a = dynamic_cast<A &>(p);
         std::cout << "A" << std::endl;
@@ -68,7 +74,9 @@ void    identify(Base & p) {
 int main(void) {
     srand(time(NULL));
     Base *b = generate();
-    std::cout << "Generated base addr: " << b << std::endl;
+    #ifdef DEBUG
+        std::cout << "Generated base addr: " << b << std::endl;
+    #endif // DEBUG
     identify(b);
     identify(*b);
     return (0);
