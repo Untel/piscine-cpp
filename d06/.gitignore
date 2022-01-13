@@ -1,0 +1,6 @@
+*.subject.pdf
+**/*.o
+**/*.d
+ex00/scalar
+ex01/serialization
+ex02/dynamic
