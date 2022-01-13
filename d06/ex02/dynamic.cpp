@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 22:46:37 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/12 23:31:58 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/13 02:35:11 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,45 +34,39 @@ Base    * generate(void) {
 
 void    identify(Base * p) {
     try {
-        A a = dynamic_cast<A>(*p);
-        std::cout << "Dynamic class is A\n";
+        if (dynamic_cast<A *>(p))
+            std::cout << "A" << std::endl;
+        else if (dynamic_cast<B *>(p))
+            std::cout << "B" << std::endl;
+        else if (dynamic_cast<C *>(p))
+            std::cout << "C" << std::endl;
+        else
+            std::cout << "Dynamic class is unknown" << std::endl;
     } catch (std::bad_cast &bc) {
-        try {
-            B *b = dynamic_cast<B>(*p);
-            std::cout << "Dynamic class is B\n";
-            catch (std::bad_cast &bc) {
-                try {
-                    C *c = dynamic_cast<C>(*c);
-                    std::cout << "Dynamic class is C\n";
-                } catch (std::bad_cast &bc) {
-                    std::cout << "Dynamic class is D\n";
-                }
-            }
-        }
+        std::cout << "Fail to catch dynamically. Reason: " << bc.what() << std::endl;
     }
 }
 
-// void    identify(Base & p) {
-//     try {
-//         A a = dynamic_cast<A>(p);
-//         std::cout << "Dynamic class is A\n";
-//     } catch (std::bad_cast &bc) {
-//         try {
-//             B *b = dynamic_cast<B>(p);
-//             std::cout << "Dynamic class is B\n";
-//             try {
-//                 C *c = dynamic_cast<C>(c);
-//                 std::cout << "Dynamic class is C\n";
-//             } catch () {
-//                 std::cout << "Dynamic class is D\n";
-//             }
-//         }
-//     }
-// }
+void    identify(Base & p) {
+    try {
+        if (dynamic_cast<A *>(&p))
+            std::cout << "A" << std::endl;
+        else if (dynamic_cast<B *>(&p))
+            std::cout << "B" << std::endl;
+        else if (dynamic_cast<C *>(&p))
+            std::cout << "C" << std::endl;
+        else
+            std::cout << "Dynamic class is unknown" << std::endl;
+    } catch (std::bad_cast &bc) {
+        std::cout << "Fail to catch dynamically. Reason: " << bc.what() << std::endl;
+    }
+}
 
 int main(void) {
     srand(time(NULL));
     Base *b = generate();
+    std::cout << "Generated base addr: " << b << std::endl;
     identify(b);
+    identify(*b);
     return (0);
 }
