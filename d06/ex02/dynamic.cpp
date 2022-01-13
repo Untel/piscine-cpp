@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 22:46:37 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/13 02:35:11 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/13 16:20:21 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,49 +16,52 @@ Base    * generate(void) {
     int randed = rand() % 3;
     if (randed == 0) {
         #ifdef DEBUG
-            std::cout << "A\n";
+            std::cout << "Should be A\n";
         #endif // DEBUG
         return new A();
     }
     if (randed == 1) {
         #ifdef DEBUG
-            std::cout << "B\n";
+            std::cout << "Should be B\n";
         #endif // DEBUG
         return new B();
     }
     #ifdef DEBUG
-        std::cout << "C\n";
+        std::cout << "Should be C\n";
     #endif // DEBUG
     return new C();
 }
 
 void    identify(Base * p) {
-    try {
-        if (dynamic_cast<A *>(p))
-            std::cout << "A" << std::endl;
-        else if (dynamic_cast<B *>(p))
-            std::cout << "B" << std::endl;
-        else if (dynamic_cast<C *>(p))
-            std::cout << "C" << std::endl;
-        else
-            std::cout << "Dynamic class is unknown" << std::endl;
-    } catch (std::bad_cast &bc) {
-        std::cout << "Fail to catch dynamically. Reason: " << bc.what() << std::endl;
-    }
+    if (dynamic_cast<A *>(p))
+        std::cout << "A" << std::endl;
+    else if (dynamic_cast<B *>(p))
+        std::cout << "B" << std::endl;
+    else if (dynamic_cast<C *>(p))
+        std::cout << "C" << std::endl;
+    else
+        std::cout << "Dynamic class is unknown" << std::endl;
 }
 
 void    identify(Base & p) {
     try {
-        if (dynamic_cast<A *>(&p))
-            std::cout << "A" << std::endl;
-        else if (dynamic_cast<B *>(&p))
+        A a = dynamic_cast<A &>(p);
+        std::cout << "A" << std::endl;
+    } catch (std::exception &bca) {
+        (void)bca;
+        try {
+            B b = dynamic_cast<B &>(p);
             std::cout << "B" << std::endl;
-        else if (dynamic_cast<C *>(&p))
-            std::cout << "C" << std::endl;
-        else
-            std::cout << "Dynamic class is unknown" << std::endl;
-    } catch (std::bad_cast &bc) {
-        std::cout << "Fail to catch dynamically. Reason: " << bc.what() << std::endl;
+        } catch (std::exception &bcb) {
+            (void)bcb;
+            try {
+                C c = dynamic_cast<C &>(c);
+                std::cout << "C" << std::endl;
+            } catch (std::exception &bcc) {
+                (void)bcc;
+                std::cout << "Dynamic class is unknown" << std::endl;
+            }
+        }
     }
 }
 
