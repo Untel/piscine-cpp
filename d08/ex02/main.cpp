@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 01:08:18 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/16 09:53:36 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/16 10:07:33 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ int
     std::cout << "Mutant size: " << mutant.size() << std::endl;
 
     mutant = legacy;
-    std::cout << "Stack size: " << legacy.size() << std::endl;
-    std::cout << "Mutant size: " << mutant.size() << std::endl;
+    mutant.pop();
+    std::cout << "Stack size: " << legacy.top() << std::endl;
+    std::cout << "Mutant size: " << mutant.top() << std::endl;
     return 0;
 }
