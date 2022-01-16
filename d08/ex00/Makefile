@@ -6,7 +6,7 @@
 #    By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/13 16:35:21 by adda-sil          #+#    #+#              #
-#    Updated: 2022/01/16 02:47:21 by adda-sil         ###   ########.fr        #
+#    Updated: 2022/01/16 07:46:13 by adda-sil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,18 +25,18 @@ CXX					= c++
 OPTS				=
 CXXFLAGS			= -std=c++98 -Wall -Wextra -Werror ${OPTS} $(INCLUDES) -MMD
 OBJS				= $(SRCS:.cpp=.o)
-NAME				= whatever
+NAME				= easyfind
 ARGS				= 
 OBJ_DIR				= objs
-DEP 				= $(OBJS:.o=.d)
+DEPS 				= $(OBJS:.o=.d)
 
 all:				
 					@$(MAKE) $(NAME)
 
-$(NAME):			$(OBJS) ${HEAD_FILES}
+$(NAME):			$(OBJS)
 					$(CXX) $(CXXFLAGS) $(OBJS) $(LIBS) -o $(NAME)
 
--include $(DEP)
+-include $(DEPS)
 
 run:				all
 					./$(NAME) $(ARGS)
