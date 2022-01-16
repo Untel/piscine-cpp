@@ -6,7 +6,7 @@
 #    By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/13 16:35:21 by adda-sil          #+#    #+#              #
-#    Updated: 2022/01/16 01:30:09 by adda-sil         ###   ########.fr        #
+#    Updated: 2022/01/16 01:44:25 by adda-sil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS_FILES			= 	\
 						main.cpp \
 
 HEAD_FILES			= \
-						whatever.hpp \
+						iter.hpp \
 
 SRCS				= $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 INCLUDES			= -I .
@@ -25,7 +25,7 @@ CXX					= c++
 OPTS				=
 CXXFLAGS			= -std=c++98 -Wall -Wextra -Werror ${OPTS} $(INCLUDES) -MMD
 OBJS				= $(SRCS:.cpp=.o)
-NAME				= whatever
+NAME				= iter
 ARGS				= 
 OBJ_DIR				= objs
 DEP 				= $(OBJS:.o=.d)
