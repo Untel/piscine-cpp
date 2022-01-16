@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 01:09:17 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/16 02:11:14 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/16 03:18:23 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ template <typename T>
 class Array {
     private:
 		T *_elements;
-		size_t _count;
+		unsigned int _n;
 
 	public:
 		Array(void) :
             _elements(NULL),
-            _count(0)
+            _n(0)
         {}
 
-		Array(size_t count) :
+		Array(unsigned int count) :
             _elements(new T[count]()),
-            _count(count)
+            _n(count)
         {}
 
 		~Array(void)
@@ -42,7 +42,7 @@ class Array {
 
 		Array(Array const &src) :
             _elements(NULL),
-            _count(0)
+            _n(0)
 		{
 			*this = src;
 		}
@@ -52,13 +52,10 @@ class Array {
 		{
 			if (&rhs == this)
 				return *this;
-			if (this->size() != rhs.size())
-			{
-				if (this->_elements != NULL)
-					delete [] this->_elements;
-				this->_elements = new T[rhs.size()];
-			}
-			this->_count = rhs.size();
+			delete [] this->_elements;
+			this->_elements = new T[rhs.size()];
+
+			this->_n = rhs._n;
 			for (size_t i = 0; i < rhs.size(); i++)
 				this->_elements[i] = rhs._elements[i];
 			return *this;
@@ -67,10 +64,7 @@ class Array {
 		T &
             operator [] (size_t i) const
 		{
-			if (!this->_elements
-                || i < 0
-                || i >= this->_count
-            )
+			if (i < 0 || i >= this->_n)
 				throw std::exception();
 			return this->_elements[i];
 		}
@@ -78,7 +72,7 @@ class Array {
 		size_t
             size(void) const
 		{
-			return this->_count;
+			return (size_t)this->_n;
 		}
 };
 

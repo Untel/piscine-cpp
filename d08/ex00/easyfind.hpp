@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iter.hpp                                           :+:      :+:    :+:   */
+/*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 01:09:17 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/16 03:08:51 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/16 02:54:33 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ITER_HPP
-# define ITER_HPP
-# include <iostream>
-# include <string>
-# include <stdio.h>
-# include <stdlib.h>
+#ifndef EASYFIND_HPP
+# define EASYFIND_HPP
+# include <algorithm>
 
 template<typename T>
-void iter(T * lst, size_t len, void (* fn)(T const & el)) {
-    for (size_t i = 0; i < len; i++)
-        fn(lst[i]);
+int easyfind(T & el, int i)
+{
+	typename T::iterator it = std::find(el.begin(), el.end(), i);
+	if (it == el.end())
+		throw std::exception();	
+	return *it;
 }
 
-template<typename T>
-void iter(T * lst, size_t len, void (* fn)(T & el)) {
-    for (size_t i = 0; i < len; i++)
-        fn(lst[i]);
-}
-
-#endif // !ITER_HPP
+#endif // EASYFIND_HPP
