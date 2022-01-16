@@ -6,7 +6,7 @@
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 01:09:17 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/16 03:18:23 by adda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/16 04:15:01 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,13 @@ class Array {
 			*this = src;
 		}
 
+		class OutOfLimits : public std::exception {
+			public:
+				virtual const char* what() const throw() {
+					return ("Out of limits");
+				}
+		};
+
 		Array const &
             operator = (Array const &rhs)
 		{
@@ -54,7 +61,6 @@ class Array {
 				return *this;
 			delete [] this->_elements;
 			this->_elements = new T[rhs.size()];
-
 			this->_n = rhs._n;
 			for (size_t i = 0; i < rhs.size(); i++)
 				this->_elements[i] = rhs._elements[i];
@@ -65,7 +71,7 @@ class Array {
             operator [] (size_t i) const
 		{
 			if (i < 0 || i >= this->_n)
-				throw std::exception();
+				throw Array::OutOfLimits();
 			return this->_elements[i];
 		}
 
