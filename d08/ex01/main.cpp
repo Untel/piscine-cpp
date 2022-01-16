@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/16 01:09:17 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/16 03:41:24 by adda-sil         ###   ########.fr       */
+/*   Created: 2022/01/16 01:08:18 by adda-sil          #+#    #+#             */
+/*   Updated: 2022/01/16 03:41:34 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EASYFIND_HPP
-# define EASYFIND_HPP
-# include <algorithm>
+#include "span.hpp"
+#include <list>
 
-template<typename T>
-int easyfind(T & el, int i)
+int
+    main(void)
 {
-	typename T::iterator it = std::find(el.begin(), el.end(), i);
-	if (it == el.end())
-		throw std::exception();	
-	return *it;
+    return 0;
 }
-#endif // EASYFIND_HPP
