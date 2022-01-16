@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.hpp                                          :+:      :+:    :+:   */
+/*   whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/11 23:23:34 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/16 01:20:43 by adda-sil         ###   ########.fr       */
+/*   Created: 2022/01/16 01:09:17 by adda-sil          #+#    #+#             */
+/*   Updated: 2022/01/16 01:22:10 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_HPP
-# define UTILS_HPP
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
-#include <iostream>
+#ifndef WHATEVER_HPP
+# define WHATEVER_HPP
 
-bool    is_digit(char c);
-bool    is_sign(char c);
-bool    is_displayable(char c);
-bool    is_char(std::string str);
-bool    is_int(std::string str);
-bool    is_double(std::string str);
-bool    is_float(std::string str);
+# include <stdlib.h>
+# include <string>
+# include <stdio.h>
+# include <iostream>
 
-#endif // !UTILS_HPP
+template<typename T>
+void swap(T const & a, T const & b) {
+    T tmp;
+    tmp = a;
+    &a = b
+    &b = tmp;
+}
+
+#endif // !WHATEVER_HPP

@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.hpp                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adda-sil <adda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/11 23:23:34 by adda-sil          #+#    #+#             */
-/*   Updated: 2022/01/16 01:20:43 by adda-sil         ###   ########.fr       */
+/*   Created: 2022/01/16 01:08:18 by adda-sil          #+#    #+#             */
+/*   Updated: 2022/01/16 01:21:51 by adda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_HPP
-# define UTILS_HPP
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
-#include <iostream>
+#include "whatever.hpp"
+# include <iostream>
 
-bool    is_digit(char c);
-bool    is_sign(char c);
-bool    is_displayable(char c);
-bool    is_char(std::string str);
-bool    is_int(std::string str);
-bool    is_double(std::string str);
-bool    is_float(std::string str);
+int
+    main(void)
+{
+    int a = 2;
+    int b = 3;
 
-#endif // !UTILS_HPP
+    ::swap(a, b)
+    std::cout << "a = " << a << ", b = " << b << std::endl;
+    return (EXIT_SUCCESS);
+}
