@@ -48,7 +48,6 @@ class Span
 	private:
 		Span(void);
 		unsigned int		_max;
-	public:
 		std::vector<int>	_v;
 };
 
