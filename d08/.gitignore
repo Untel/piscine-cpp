@@ -1,0 +1,6 @@
+*.subject.pdf
+**/*.o
+**/*.d
+ex00/easyfind
+ex01/span
+ex02/mutantstack
